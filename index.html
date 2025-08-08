@@ -241,6 +241,17 @@
     .table-container::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
+
+    .waveform-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer; /* Add this line */
+    }
+
+    .waveform-canvas:hover {
+        opacity: 0.8;
+    }
 </style>
 </head>
 <body>
@@ -290,7 +301,7 @@
                         <td class="id-column">0</td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-prompt"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-prompt" onclick="seekAudio('0-prompt', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-0-prompt"></div>
                             </div>
@@ -302,7 +313,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-ground"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-ground" onclick="seekAudio('0-ground', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-ground">Loading...</div>
                                 <div class="progress-line" id="progress-0-ground"></div>
                             </div>
@@ -314,7 +325,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-turnguide"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-turnguide" onclick="seekAudio('0-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-0-turnguide"></div>
                             </div>
@@ -326,7 +337,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-baseline"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-baseline" onclick="seekAudio('0-baseline', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-0-baseline"></div>
                             </div>
@@ -338,7 +349,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-cascaded"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-cascaded" onclick="seekAudio('0-cascaded', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-0-cascaded"></div>
                             </div>
@@ -353,7 +364,7 @@
                         <td class="id-column">1</td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-prompt"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-prompt" onclick="seekAudio('1-prompt', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-1-prompt"></div>
                             </div>
@@ -365,7 +376,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-ground"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-ground" onclick="seekAudio('1-ground', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-ground">Loading...</div>
                                 <div class="progress-line" id="progress-1-ground"></div>
                             </div>
@@ -377,7 +388,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-turnguide"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-turnguide" onclick="seekAudio('1-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-1-turnguide"></div>
                             </div>
@@ -389,7 +400,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-baseline"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-baseline" onclick="seekAudio('1-baseline', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-1-baseline"></div>
                             </div>
@@ -401,7 +412,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-cascaded"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-cascaded" onclick="seekAudio('1-cascaded', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-1-cascaded"></div>
                             </div>
@@ -519,9 +530,12 @@
             
             // Draw initial waveform
             drawWaveform(canvas, waveformPoints, 0);
-            
+
             // Hide loading indicator
             loadingElement.style.display = 'none';
+
+            // Make canvas clickable by adding event listener (backup method)
+            canvas.style.cursor = 'pointer';
             
         } catch (error) {
             console.error(`Error loading waveform for ${audioId}:`, error);
