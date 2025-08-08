@@ -75,7 +75,7 @@
 
     .demo-table {
         width: 100%;
-        min-width: 1000px;
+        min-width: 1200px;
         border-collapse: collapse;
     }
 
@@ -288,16 +288,16 @@
             <table class="demo-table">
                 <thead>
                     <tr>
-                        <th rowspan="2" class="id-column">ID</th>
                         <th>Original Speech</th>
-                        <th colspan="4">Speech Continuations</th>
+                        <th colspan="5">Speech Continuations</th>
                     </tr>
                     <tr>
                         <th>Prompt</th>
+                        <th>dGSLM</th>
+                        <th>SCI</th>
+                        <th>Moshi TS</th>
+                        <th>TurnGuide (Ours)</th>
                         <th>Ground Truth</th>
-                        <th>TurnGuide (Our Method)</th>
-                        <th>Baseline FD-SLM</th>
-                        <th>Cascaded Method</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -316,18 +316,46 @@
                             <div class="error-message" id="error-0-prompt"></div>
                         </td>
                         <td>
+                            <!-- dGSLM cell - rename from ground truth -->
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-ground" onclick="seekAudio('0-ground', event)"></canvas>
-                                <div class="waveform-loading" id="loading-0-ground">Loading...</div>
-                                <div class="progress-line" id="progress-0-ground"></div>
+                                <canvas class="waveform-canvas" id="waveform-0-dgslm" onclick="seekAudio('0-dgslm', event)"></canvas>
+                                <div class="waveform-loading" id="loading-0-dgslm">Loading...</div>
+                                <div class="progress-line" id="progress-0-dgslm"></div>
                             </div>
                             <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('0-ground')">▶ Play</button>
+                                <button class="play-btn" onclick="playAudio('0-dgslm')">▶ Play</button>
                             </div>
-                            <div class="audio-duration" id="duration-0-ground"></div>
-                            <div class="error-message" id="error-0-ground"></div>
+                            <div class="audio-duration" id="duration-0-dgslm"></div>
+                            <div class="error-message" id="error-0-dgslm"></div>
                         </td>
                         <td>
+                            <!-- SCI cell - rename from turnguide -->
+                            <div class="waveform-container">
+                                <canvas class="waveform-canvas" id="waveform-0-sci" onclick="seekAudio('0-sci', event)"></canvas>
+                                <div class="waveform-loading" id="loading-0-sci">Loading...</div>
+                                <div class="progress-line" id="progress-0-sci"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-sci')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-sci"></div>
+                            <div class="error-message" id="error-0-sci"></div>
+                        </td>
+                        <td>
+                            <!-- Moshi TS cell - rename from baseline -->
+                            <div class="waveform-container">
+                                <canvas class="waveform-canvas" id="waveform-0-moshi" onclick="seekAudio('0-moshi', event)"></canvas>
+                                <div class="waveform-loading" id="loading-0-moshi">Loading...</div>
+                                <div class="progress-line" id="progress-0-moshi"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-moshi')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-moshi"></div>
+                            <div class="error-message" id="error-0-moshi"></div>
+                        </td>
+                        <td>
+                            <!-- TurnGuide (Ours) cell - rename from cascaded -->
                             <div class="waveform-container">
                                 <canvas class="waveform-canvas" id="waveform-0-turnguide" onclick="seekAudio('0-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-turnguide">Loading...</div>
@@ -340,28 +368,17 @@
                             <div class="error-message" id="error-0-turnguide"></div>
                         </td>
                         <td>
+                            <!-- Ground Truth cell - new addition -->
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-baseline" onclick="seekAudio('0-baseline', event)"></canvas>
-                                <div class="waveform-loading" id="loading-0-baseline">Loading...</div>
-                                <div class="progress-line" id="progress-0-baseline"></div>
+                                <canvas class="waveform-canvas" id="waveform-0-ground" onclick="seekAudio('0-ground', event)"></canvas>
+                                <div class="waveform-loading" id="loading-0-ground">Loading...</div>
+                                <div class="progress-line" id="progress-0-ground"></div>
                             </div>
                             <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('0-baseline')">▶ Play</button>
+                                <button class="play-btn" onclick="playAudio('0-ground')">▶ Play</button>
                             </div>
-                            <div class="audio-duration" id="duration-0-baseline"></div>
-                            <div class="error-message" id="error-0-baseline"></div>
-                        </td>
-                        <td>
-                            <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-cascaded" onclick="seekAudio('0-cascaded', event)"></canvas>
-                                <div class="waveform-loading" id="loading-0-cascaded">Loading...</div>
-                                <div class="progress-line" id="progress-0-cascaded"></div>
-                            </div>
-                            <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('0-cascaded')">▶ Play</button>
-                            </div>
-                            <div class="audio-duration" id="duration-0-cascaded"></div>
-                            <div class="error-message" id="error-0-cascaded"></div>
+                            <div class="audio-duration" id="duration-0-ground"></div>
+                            <div class="error-message" id="error-0-ground"></div>
                         </td>
                     </tr>
                     <tr>
@@ -379,18 +396,46 @@
                             <div class="error-message" id="error-1-prompt"></div>
                         </td>
                         <td>
+                            <!-- dGSLM cell - rename from ground truth -->
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-ground" onclick="seekAudio('1-ground', event)"></canvas>
-                                <div class="waveform-loading" id="loading-1-ground">Loading...</div>
-                                <div class="progress-line" id="progress-1-ground"></div>
+                                <canvas class="waveform-canvas" id="waveform-1-dgslm" onclick="seekAudio('1-dgslm', event)"></canvas>
+                                <div class="waveform-loading" id="loading-1-dgslm">Loading...</div>
+                                <div class="progress-line" id="progress-1-dgslm"></div>
                             </div>
                             <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('1-ground')">▶ Play</button>
+                                <button class="play-btn" onclick="playAudio('1-dgslm')">▶ Play</button>
                             </div>
-                            <div class="audio-duration" id="duration-1-ground"></div>
-                            <div class="error-message" id="error-1-ground"></div>
+                            <div class="audio-duration" id="duration-1-dgslm"></div>
+                            <div class="error-message" id="error-1-dgslm"></div>
                         </td>
                         <td>
+                            <!-- SCI cell - rename from turnguide -->
+                            <div class="waveform-container">
+                                <canvas class="waveform-canvas" id="waveform-1-sci" onclick="seekAudio('1-sci', event)"></canvas>
+                                <div class="waveform-loading" id="loading-1-sci">Loading...</div>
+                                <div class="progress-line" id="progress-1-sci"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-sci')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-sci"></div>
+                            <div class="error-message" id="error-1-sci"></div>
+                        </td>
+                        <td>
+                            <!-- Moshi TS cell - rename from baseline -->
+                            <div class="waveform-container">
+                                <canvas class="waveform-canvas" id="waveform-1-moshi" onclick="seekAudio('1-moshi', event)"></canvas>
+                                <div class="waveform-loading" id="loading-1-moshi">Loading...</div>
+                                <div class="progress-line" id="progress-1-moshi"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-moshi')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-moshi"></div>
+                            <div class="error-message" id="error-1-moshi"></div>
+                        </td>
+                        <td>
+                            <!-- TurnGuide (Ours) cell - rename from cascaded -->
                             <div class="waveform-container">
                                 <canvas class="waveform-canvas" id="waveform-1-turnguide" onclick="seekAudio('1-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-turnguide">Loading...</div>
@@ -403,28 +448,17 @@
                             <div class="error-message" id="error-1-turnguide"></div>
                         </td>
                         <td>
+                            <!-- Ground Truth cell - new addition -->
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-baseline" onclick="seekAudio('1-baseline', event)"></canvas>
-                                <div class="waveform-loading" id="loading-1-baseline">Loading...</div>
-                                <div class="progress-line" id="progress-1-baseline"></div>
+                                <canvas class="waveform-canvas" id="waveform-1-ground" onclick="seekAudio('1-ground', event)"></canvas>
+                                <div class="waveform-loading" id="loading-1-ground">Loading...</div>
+                                <div class="progress-line" id="progress-1-ground"></div>
                             </div>
                             <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('1-baseline')">▶ Play</button>
+                                <button class="play-btn" onclick="playAudio('1-ground')">▶ Play</button>
                             </div>
-                            <div class="audio-duration" id="duration-1-baseline"></div>
-                            <div class="error-message" id="error-1-baseline"></div>
-                        </td>
-                        <td>
-                            <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-cascaded" onclick="seekAudio('1-cascaded', event)"></canvas>
-                                <div class="waveform-loading" id="loading-1-cascaded">Loading...</div>
-                                <div class="progress-line" id="progress-1-cascaded"></div>
-                            </div>
-                            <div class="audio-controls">
-                                <button class="play-btn" onclick="playAudio('1-cascaded')">▶ Play</button>
-                            </div>
-                            <div class="audio-duration" id="duration-1-cascaded"></div>
-                            <div class="error-message" id="error-1-cascaded"></div>
+                            <div class="audio-duration" id="duration-1-ground"></div>
+                            <div class="error-message" id="error-1-ground"></div>
                         </td>
                     </tr>
                 </tbody>
@@ -438,15 +472,17 @@
             <label for="transcript-select">Select Audio Sample: </label>
             <select id="transcript-select" onchange="showTranscript()">
                 <option value="0-prompt">Sample 0 - Prompt</option>
+                <option value="0-dgslm">Sample 0 - dGSLM</option>
+                <option value="0-sci">Sample 0 - SCI</option>
+                <option value="0-moshi">Sample 0 - Moshi TS</option>
+                <option value="0-turnguide">Sample 0 - TurnGuide (Ours)</option>
                 <option value="0-ground">Sample 0 - Ground Truth</option>
-                <option value="0-turnguide">Sample 0 - TurnGuide (Our Method)</option>
-                <option value="0-baseline">Sample 0 - Baseline FD-SLM</option>
-                <option value="0-cascaded">Sample 0 - Cascaded</option>
                 <option value="1-prompt">Sample 1 - Prompt</option>
+                <option value="1-dgslm">Sample 1 - dGSLM</option>
+                <option value="1-sci">Sample 1 - SCI</option>
+                <option value="1-moshi">Sample 1 - Moshi TS</option>
+                <option value="1-turnguide">Sample 1 - TurnGuide (Ours)</option>
                 <option value="1-ground">Sample 1 - Ground Truth</option>
-                <option value="1-turnguide">Sample 1 - TurnGuide (Our Method)</option>
-                <option value="1-baseline">Sample 1 - Baseline FD-SLM</option>
-                <option value="1-cascaded">Sample 1 - Cascaded</option>
             </select>
         </div>
         <div class="transcript-box" id="transcript-display">
@@ -469,15 +505,17 @@ right speaker, start/end time: (91.58, 100.94), content:  Right.
 left speaker, start/end time: (94.24, 97.20), content:  there to my brother Said this guy's arm Is bigger than my waist He
 left speaker, start/end time: (97.20, 100.30), content:  just You know He just had everybody And it was a fun It wasn't a bad
 left speaker, start/end time: (100.30, 102.70), content:  thing It was just talking about How big his arm was And that was`,
-        '0-ground': 'This is the ground truth continuation of the first sample...',
-        '0-turnguide': 'This is the TurnGuide continuation of the first sample...',
-        '0-baseline': 'This is the baseline FD-SLM continuation of the first sample...',
-        '0-cascaded': 'This is the cascaded model continuation of the first sample...',
-        '1-prompt': 'This is the beginning of the second speech sample...',
-        '1-ground': 'This is the ground truth continuation of the second sample...',
-        '1-turnguide': 'This is the TurnGuide continuation of the second sample...',
-        '1-baseline': 'This is the baseline FD-SLM continuation of the second sample...',
-        '1-cascaded': 'This is the cascaded model continuation of the second sample...'
+        '0-dgslm': `This is the dGSLM continuation of the first sample...`,
+        '0-sci': `This is the SCI continuation of the first sample...`,
+        '0-moshi': `This is the Moshi TS continuation of the first sample...`,
+        '0-turnguide': `This is the TurnGuide continuation of the first sample...`,
+        '0-ground': `This is the ground truth continuation of the first sample...`,
+        '1-prompt': `This is the beginning of the second speech sample...`,
+        '1-dgslm': `This is the dGSLM continuation of the second sample...`,
+        '1-sci': `This is the SCI continuation of the second sample...`,
+        '1-moshi': `This is the Moshi TS continuation of the second sample...`,
+        '1-turnguide': `This is the TurnGuide continuation of the second sample...`,
+        '1-ground': `This is the ground truth continuation of the second sample...`
     };
 
     let currentlyPlaying = null;
@@ -738,8 +776,8 @@ left speaker, start/end time: (100.30, 102.70), content:  thing It was just talk
     document.addEventListener('DOMContentLoaded', async () => {
         // Load waveforms for all audio samples
         const audioIds = [
-            '0-prompt', '0-ground', '0-turnguide', '0-baseline', '0-cascaded',
-            '1-prompt', '1-ground', '1-turnguide', '1-baseline', '1-cascaded'
+            '0-prompt', '0-dgslm', '0-sci', '0-moshi', '0-turnguide', '0-ground',
+            '1-prompt', '1-dgslm', '1-sci', '1-moshi', '1-turnguide', '1-ground'
         ];
         
         // Load waveforms asynchronously

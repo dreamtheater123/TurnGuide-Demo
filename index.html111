@@ -181,6 +181,10 @@
         margin-top: 15px;
         font-family: 'Courier New', monospace;
         line-height: 1.8;
+        white-space: pre-wrap; /* Add this line to preserve line breaks */
+        word-wrap: break-word; /* Add this line for better word wrapping */
+        max-height: 300px; /* Add this line to limit height */
+        overflow-y: auto; /* Add this line for scrolling if content is too long */
     }
 
     .transcript-selector {
@@ -241,6 +245,17 @@
     .table-container::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
+
+    .waveform-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer; /* Add this line */
+    }
+
+    .waveform-canvas:hover {
+        opacity: 0.8;
+    }
 </style>
 </head>
 <body>
@@ -275,7 +290,7 @@
                     <tr>
                         <th rowspan="2" class="id-column">ID</th>
                         <th>Original Speech</th>
-                        <th colspan="4">Synthesized Speech Continuation</th>
+                        <th colspan="4">Speech Continuations</th>
                     </tr>
                     <tr>
                         <th>Prompt</th>
@@ -290,7 +305,7 @@
                         <td class="id-column">0</td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-prompt"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-prompt" onclick="seekAudio('0-prompt', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-0-prompt"></div>
                             </div>
@@ -302,7 +317,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-ground"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-ground" onclick="seekAudio('0-ground', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-ground">Loading...</div>
                                 <div class="progress-line" id="progress-0-ground"></div>
                             </div>
@@ -314,7 +329,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-turnguide"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-turnguide" onclick="seekAudio('0-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-0-turnguide"></div>
                             </div>
@@ -326,7 +341,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-baseline"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-baseline" onclick="seekAudio('0-baseline', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-0-baseline"></div>
                             </div>
@@ -338,7 +353,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-0-cascaded"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-0-cascaded" onclick="seekAudio('0-cascaded', event)"></canvas>
                                 <div class="waveform-loading" id="loading-0-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-0-cascaded"></div>
                             </div>
@@ -353,7 +368,7 @@
                         <td class="id-column">1</td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-prompt"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-prompt" onclick="seekAudio('1-prompt', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-1-prompt"></div>
                             </div>
@@ -365,7 +380,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-ground"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-ground" onclick="seekAudio('1-ground', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-ground">Loading...</div>
                                 <div class="progress-line" id="progress-1-ground"></div>
                             </div>
@@ -377,7 +392,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-turnguide"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-turnguide" onclick="seekAudio('1-turnguide', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-1-turnguide"></div>
                             </div>
@@ -389,7 +404,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-baseline"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-baseline" onclick="seekAudio('1-baseline', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-1-baseline"></div>
                             </div>
@@ -401,7 +416,7 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <canvas class="waveform-canvas" id="waveform-1-cascaded"></canvas>
+                                <canvas class="waveform-canvas" id="waveform-1-cascaded" onclick="seekAudio('1-cascaded', event)"></canvas>
                                 <div class="waveform-loading" id="loading-1-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-1-cascaded"></div>
                             </div>
@@ -443,7 +458,17 @@
 <script>
     // Sample transcripts (replace with your actual transcripts)
     const transcripts = {
-        '0-prompt': 'This is the beginning of the first speech sample...',
+        '0-prompt': `left speaker, start/end time: (79.18, 81.16), content:  had on a tank top Tonight We went to the club And
+left speaker, start/end time: (81.20, 83.56), content:  the little The little midget Looked out there in the
+right speaker, start/end time: (81.26, 81.50), content:  Uh-oh.
+right speaker, start/end time: (81.64, 90.08), content:  Mm-hmm.
+left speaker, start/end time: (83.56, 86.57), content:  water Cause it was like The third row back God damn
+left speaker, start/end time: (87.20, 90.96), content:  His arms My brother's got Really huge arms And he started tripping
+left speaker, start/end time: (90.96, 94.24), content:  That guy actually Come off the stage Walked his little bitty self Over
+right speaker, start/end time: (91.58, 100.94), content:  Right.
+left speaker, start/end time: (94.24, 97.20), content:  there to my brother Said this guy's arm Is bigger than my waist He
+left speaker, start/end time: (97.20, 100.30), content:  just You know He just had everybody And it was a fun It wasn't a bad
+left speaker, start/end time: (100.30, 102.70), content:  thing It was just talking about How big his arm was And that was`,
         '0-ground': 'This is the ground truth continuation of the first sample...',
         '0-turnguide': 'This is the TurnGuide continuation of the first sample...',
         '0-baseline': 'This is the baseline FD-SLM continuation of the first sample...',
@@ -519,9 +544,12 @@
             
             // Draw initial waveform
             drawWaveform(canvas, waveformPoints, 0);
-            
+
             // Hide loading indicator
             loadingElement.style.display = 'none';
+
+            // Make canvas clickable by adding event listener (backup method)
+            canvas.style.cursor = 'pointer';
             
         } catch (error) {
             console.error(`Error loading waveform for ${audioId}:`, error);
@@ -562,6 +590,38 @@
         const canvas = document.getElementById(`waveform-${audioId}`);
         if (canvas && waveformData[audioId]) {
             drawWaveform(canvas, waveformData[audioId], progress);
+        }
+    }
+
+    function seekAudio(audioId, event) {
+        // Don't seek if audio hasn't been loaded yet
+        if (!audioElements[audioId] || !waveformData[audioId]) {
+            return;
+        }
+        
+        const canvas = event.target;
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const clickProgress = x / canvas.width;
+        
+        // Clamp progress between 0 and 1
+        const progress = Math.max(0, Math.min(1, clickProgress));
+        
+        // If audio is loaded, seek to the clicked position
+        if (audioElements[audioId].duration) {
+            const seekTime = progress * audioElements[audioId].duration;
+            audioElements[audioId].currentTime = seekTime;
+            
+            // Update visual progress immediately
+            const progressLine = document.getElementById(`progress-${audioId}`);
+            const progressPx = progress * 200;
+            progressLine.style.left = progressPx + 'px';
+            updateWaveformProgress(audioId, progress);
+            
+            // If audio wasn't playing, start playing from the clicked position
+            if (currentlyPlaying !== audioId) {
+                playAudio(audioId);
+            }
         }
     }
 
