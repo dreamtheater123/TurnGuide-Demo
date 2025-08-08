@@ -286,7 +286,7 @@
                     <tr>
                         <th rowspan="2" class="id-column">ID</th>
                         <th>Original Speech</th>
-                        <th colspan="4">Synthesized Speech Continuation</th>
+                        <th colspan="4">Speech Continuations</th>
                     </tr>
                     <tr>
                         <th>Prompt</th>
@@ -454,7 +454,10 @@
 <script>
     // Sample transcripts (replace with your actual transcripts)
     const transcripts = {
-        '0-prompt': 'This is the beginning of the first speech sample...',
+        '0-prompt': `right speaker, start/end time: (72.02, 73.20), content:  they look and see who the crowd is,
+left speaker, start/end time: (73.37, 78.10), content:  Yeah Cause my brother Is really This big guy He's a bodybuilder He
+right speaker, start/end time: (73.46, 73.72), content:  and,
+right speaker, start/end time: (73.72, 74.84), content:  you know,`,
         '0-ground': 'This is the ground truth continuation of the first sample...',
         '0-turnguide': 'This is the TurnGuide continuation of the first sample...',
         '0-baseline': 'This is the baseline FD-SLM continuation of the first sample...',
