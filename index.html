@@ -66,10 +66,17 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
+    .table-container {
+        overflow-x: auto;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
     .demo-table {
         width: 100%;
+        min-width: 1000px;
         border-collapse: collapse;
-        margin-top: 20px;
     }
 
     .demo-table th,
@@ -84,6 +91,9 @@
         background-color: #f8f9fa;
         font-weight: bold;
         color: #2c3e50;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
 
     .waveform-container {
@@ -99,23 +109,34 @@
     .waveform {
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, transparent 10%,
-            #e74c3c 10%, #e74c3c 12%,
-            transparent 12%, transparent 20%,
-            #e74c3c 20%, #e74c3c 25%,
-            transparent 25%, transparent 30%,
-            #e74c3c 30%, #e74c3c 32%,
-            transparent 32%, transparent 40%,
-            #e74c3c 40%, #e74c3c 45%,
-            transparent 45%, transparent 55%,
-            #e74c3c 55%, #e74c3c 60%,
-            transparent 60%, transparent 70%,
-            #e74c3c 70%, #e74c3c 72%,
-            transparent 72%, transparent 80%,
-            #e74c3c 80%, #e74c3c 85%,
-            transparent 85%, transparent 100%);
-        background-size: 20px 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+    }
+
+    .waveform-bars {
+        display: flex;
+        align-items: end;
+        height: 70px;
+        gap: 2px;
+        justify-content: center;
+    }
+
+    .waveform-bar {
+        width: 3px;
+        background: #e74c3c;
+        border-radius: 1px;
+        transition: height 0.1s ease;
+    }
+
+    .waveform-bar.static {
+        opacity: 0.3;
+    }
+
+    .waveform-bar.active {
+        opacity: 1;
+        background: #2980b9;
     }
 
     .progress-line {
@@ -127,6 +148,7 @@
         background: #3498db;
         opacity: 0;
         transition: left 0.1s ease;
+        z-index: 5;
     }
 
     .audio-controls {
@@ -194,6 +216,9 @@
         background-color: #f8f9fa;
         font-weight: bold;
         width: 50px;
+        position: sticky;
+        left: 0;
+        z-index: 5;
     }
 
     .note {
@@ -214,6 +239,25 @@
         color: #e74c3c;
         font-size: 12px;
         margin-top: 5px;
+    }
+
+    /* Scrollbar styling */
+    .table-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 </style>
 </head>
@@ -243,139 +287,162 @@
             <strong>Note:</strong> The first 30 seconds of audio serves as the prompt to the model, and the model generates a 90 seconds continuations.
         </div>
 
-        <table class="demo-table">
-            <thead>
-                <tr>
-                    <th rowspan="2" class="id-column">ID</th>
-                    <th>Original Speech</th>
-                    <th colspan="4">Synthesized Speech Continuation</th>
-                </tr>
-                <tr>
-                    <th>Prompt</th>
-                    <th>Ground Truth</th>
-                    <th>TurnGuide (Our Method)</th>
-                    <th>Baseline FD-SLM</th>
-                    <th>Cascaded Method</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td rowspan="2" class="id-column">0</td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-0-prompt"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('0-prompt')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-0-prompt"></div>
-                        <div class="error-message" id="error-0-prompt"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-0-ground"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('0-ground')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-0-ground"></div>
-                        <div class="error-message" id="error-0-ground"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-0-turnguide"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('0-turnguide')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-0-turnguide"></div>
-                        <div class="error-message" id="error-0-turnguide"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-0-baseline"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('0-baseline')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-0-baseline"></div>
-                        <div class="error-message" id="error-0-baseline"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-0-cascaded"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('0-cascaded')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-0-cascaded"></div>
-                        <div class="error-message" id="error-0-cascaded"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-1-prompt"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('1-prompt')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-1-prompt"></div>
-                        <div class="error-message" id="error-1-prompt"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-1-ground"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('1-ground')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-1-ground"></div>
-                        <div class="error-message" id="error-1-ground"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-1-turnguide"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('1-turnguide')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-1-turnguide"></div>
-                        <div class="error-message" id="error-1-turnguide"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-1-baseline"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('1-baseline')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-1-baseline"></div>
-                        <div class="error-message" id="error-1-baseline"></div>
-                    </td>
-                    <td>
-                        <div class="waveform-container">
-                            <div class="waveform"></div>
-                            <div class="progress-line" id="progress-1-cascaded"></div>
-                        </div>
-                        <div class="audio-controls">
-                            <button class="play-btn" onclick="playAudio('1-cascaded')">▶ Play</button>
-                        </div>
-                        <div class="audio-duration" id="duration-1-cascaded"></div>
-                        <div class="error-message" id="error-1-cascaded"></div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="demo-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="id-column">ID</th>
+                        <th>Original Speech</th>
+                        <th colspan="4">Synthesized Speech Continuation</th>
+                    </tr>
+                    <tr>
+                        <th>Prompt</th>
+                        <th>Ground Truth</th>
+                        <th>TurnGuide (Our Method)</th>
+                        <th>Baseline FD-SLM</th>
+                        <th>Cascaded Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="id-column">0</td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-0-prompt"></div>
+                                </div>
+                                <div class="progress-line" id="progress-0-prompt"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-prompt')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-prompt"></div>
+                            <div class="error-message" id="error-0-prompt"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-0-ground"></div>
+                                </div>
+                                <div class="progress-line" id="progress-0-ground"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-ground')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-ground"></div>
+                            <div class="error-message" id="error-0-ground"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-0-turnguide"></div>
+                                </div>
+                                <div class="progress-line" id="progress-0-turnguide"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-turnguide')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-turnguide"></div>
+                            <div class="error-message" id="error-0-turnguide"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-0-baseline"></div>
+                                </div>
+                                <div class="progress-line" id="progress-0-baseline"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-baseline')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-baseline"></div>
+                            <div class="error-message" id="error-0-baseline"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-0-cascaded"></div>
+                                </div>
+                                <div class="progress-line" id="progress-0-cascaded"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('0-cascaded')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-0-cascaded"></div>
+                            <div class="error-message" id="error-0-cascaded"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="id-column">1</td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-1-prompt"></div>
+                                </div>
+                                <div class="progress-line" id="progress-1-prompt"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-prompt')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-prompt"></div>
+                            <div class="error-message" id="error-1-prompt"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-1-ground"></div>
+                                </div>
+                                <div class="progress-line" id="progress-1-ground"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-ground')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-ground"></div>
+                            <div class="error-message" id="error-1-ground"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-1-turnguide"></div>
+                                </div>
+                                <div class="progress-line" id="progress-1-turnguide"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-turnguide')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-turnguide"></div>
+                            <div class="error-message" id="error-1-turnguide"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-1-baseline"></div>
+                                </div>
+                                <div class="progress-line" id="progress-1-baseline"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-baseline')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-baseline"></div>
+                            <div class="error-message" id="error-1-baseline"></div>
+                        </td>
+                        <td>
+                            <div class="waveform-container">
+                                <div class="waveform">
+                                    <div class="waveform-bars" id="waveform-1-cascaded"></div>
+                                </div>
+                                <div class="progress-line" id="progress-1-cascaded"></div>
+                            </div>
+                            <div class="audio-controls">
+                                <button class="play-btn" onclick="playAudio('1-cascaded')">▶ Play</button>
+                            </div>
+                            <div class="audio-duration" id="duration-1-cascaded"></div>
+                            <div class="error-message" id="error-1-cascaded"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <section class="transcript-section">
@@ -418,11 +485,63 @@
 
     let currentlyPlaying = null;
     let audioElements = {};
+    let waveformAnimations = {};
 
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function createWaveformBars(containerId) {
+        const container = document.getElementById(`waveform-${containerId}`);
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Create 40 bars with random heights
+        for (let i = 0; i < 40; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'waveform-bar static';
+            const height = Math.random() * 60 + 10; // Random height between 10-70px
+            bar.style.height = height + 'px';
+            container.appendChild(bar);
+        }
+    }
+
+    function animateWaveform(audioId, isPlaying) {
+        const container = document.getElementById(`waveform-${audioId}`);
+        if (!container) return;
+        
+        const bars = container.querySelectorAll('.waveform-bar');
+        
+        if (isPlaying) {
+            // Start animation
+            waveformAnimations[audioId] = setInterval(() => {
+                bars.forEach((bar, index) => {
+                    // Create wave-like animation
+                    const time = Date.now() * 0.005;
+                    const wave = Math.sin(time + index * 0.3) * 0.5 + 0.5;
+                    const baseHeight = parseFloat(bar.style.height) || 30;
+                    const animatedHeight = baseHeight * (0.5 + wave * 0.8);
+                    
+                    bar.style.height = animatedHeight + 'px';
+                    bar.classList.remove('static');
+                    bar.classList.add('active');
+                });
+            }, 100);
+        } else {
+            // Stop animation
+            if (waveformAnimations[audioId]) {
+                clearInterval(waveformAnimations[audioId]);
+                delete waveformAnimations[audioId];
+            }
+            
+            bars.forEach(bar => {
+                bar.classList.remove('active');
+                bar.classList.add('static');
+            });
+        }
     }
 
     function playAudio(audioId) {
@@ -471,6 +590,7 @@
                 button.disabled = false;
                 button.textContent = '▶ Play';
                 button.classList.remove('playing');
+                animateWaveform(audioId, false);
             });
             
             audioElements[audioId].addEventListener('canplay', () => {
@@ -484,6 +604,9 @@
         button.classList.add('playing');
         button.disabled = true; // Disable during loading
         progressLine.style.opacity = '1';
+        
+        // Start waveform animation
+        animateWaveform(audioId, true);
         
         // Play the audio
         audioElements[audioId].play().then(() => {
@@ -510,6 +633,9 @@
         progressLine.style.opacity = '0';
         progressLine.style.left = '0px';
         
+        // Stop waveform animation
+        animateWaveform(audioId, false);
+        
         if (currentlyPlaying === audioId) {
             currentlyPlaying = null;
         }
@@ -527,13 +653,28 @@
         }
     }
 
-    // Initialize transcript display
-    showTranscript();
+    // Initialize waveforms and transcript display
+    document.addEventListener('DOMContentLoaded', () => {
+        // Create waveform bars for all audio samples
+        const audioIds = [
+            '0-prompt', '0-ground', '0-turnguide', '0-baseline', '0-cascaded',
+            '1-prompt', '1-ground', '1-turnguide', '1-baseline', '1-cascaded'
+        ];
+        
+        audioIds.forEach(id => {
+            createWaveformBars(id);
+        });
+        
+        showTranscript();
+    });
 
     // Stop all audio when page is unloaded
     window.addEventListener('beforeunload', () => {
         Object.values(audioElements).forEach(audio => {
             audio.pause();
+        });
+        Object.values(waveformAnimations).forEach(animation => {
+            clearInterval(animation);
         });
     });
 </script>
