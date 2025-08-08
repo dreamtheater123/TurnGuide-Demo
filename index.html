@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dGSLM: Direct Generation Speech Language Model</title>
+  <title>Think Before You Talk: Enhancing Meaningful Dialogue Generation in Full-Duplex Speech Language Models with Planning-Inspired Text Guidance</title>
   <style>
       * {
           margin: 0;
@@ -205,8 +205,8 @@
       <header>
           <h1>dGSLM: Direct Generation Speech Language Model</h1>
           <div class="authors">
-              Author Name¹, Author Name², Author Name³<br>
-              ¹Institution 1, ²Institution 2, ³Institution 3
+              Wenqian Cui¹, Xiaohui Li², Lei Zhu², Zhihan Guo¹, Haoli Bai², Lu Hou², Irwin King¹<br>
+              ¹The Chinese University of Hong Kong, ²Huawei Noah’s Ark Lab
           </div>
           <div style="margin-top: 20px;">
               <a href="#" style="margin: 0 10px; color: #3498db; text-decoration: none;">[Paper]</a>
@@ -217,13 +217,13 @@
 
       <section class="abstract">
           <h2>Abstract</h2>
-          <p>We present dGSLM (direct Generation Speech Language Model), a system attending to both unit streams with the help of cross-attention. The dGSLM model then generates new pseudo-text and feeds them to the decoder to produce a new waveform. The entire pipeline is trained without supervision or text. Our approach demonstrates significant improvements in speech generation quality and naturalness compared to existing methods.</p>
+          <p>Full-Duplex Speech Language Models (FD-SLMs) are specialized speech foundation models designed to enable natural, real-time spoken interactions by capturing complex conversational dynamics, such as interruptions, backchannels, and overlapping speech. While cascaded FD-SLMs rely on external modules to learn discrete, predefined behaviors for duplex communications, end-to-end (e2e) FD-SLMs leverage real-world conversational data, enabling models to capture nuanced dialogue patterns for more human-like interactions---a key advantage that motivates our focus on e2e systems. However, e2e FD-SLMs face a significant challenge: their conversational abilities often degrade compared to text-based Large Language Models due to the prolonged nature of speech sequences and the scarcity of high-quality spoken dialogue data. To address this, we propose a novel planning-inspired methodology, <b>TurnGuide</b>, for integrating turn-level text guidance into double-channel spoken conversational contexts. Our approach dynamically segments the assistant's speech into dialogue turns and trains the assistant to first output text guidance for each turn before generating the corresponding speech. This not only aligns with conversational flow but also addresses the critical issues of timing and length of text guidance. Extensive experiments demonstrate that our method significantly enhances e2e FD-SLMs' ability to generate semantically meaningful and coherent speech, while preserving the natural flow of full-duplex spoken dialogues.</p>
       </section>
 
       <section class="demo-section">
           <h2>Audio Demonstrations</h2>
           <div class="note">
-              <strong>Note:</strong> The synthesized speakers are different from the original ones, but we deliberately choose speakers with the same gender as in the original speech. You will hear a ding sound at the end of the prompt duration.
+              <strong>Note:</strong> The first 30 seconds of audio serves as the prompt to the model, and the model generates a 90 seconds continuations.
           </div>
 
           <table class="demo-table">
