@@ -106,37 +106,19 @@
         overflow: hidden;
     }
 
-    .waveform {
+    .waveform-canvas {
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5px;
+        display: block;
     }
 
-    .waveform-bars {
-        display: flex;
-        align-items: end;
-        height: 70px;
-        gap: 2px;
-        justify-content: center;
-    }
-
-    .waveform-bar {
-        width: 3px;
-        background: #e74c3c;
-        border-radius: 1px;
-        transition: height 0.1s ease;
-    }
-
-    .waveform-bar.static {
-        opacity: 0.3;
-    }
-
-    .waveform-bar.active {
-        opacity: 1;
-        background: #2980b9;
+    .waveform-loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        color: #666;
     }
 
     .progress-line {
@@ -308,9 +290,8 @@
                         <td class="id-column">0</td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-0-prompt"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-0-prompt"></canvas>
+                                <div class="waveform-loading" id="loading-0-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-0-prompt"></div>
                             </div>
                             <div class="audio-controls">
@@ -321,9 +302,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-0-ground"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-0-ground"></canvas>
+                                <div class="waveform-loading" id="loading-0-ground">Loading...</div>
                                 <div class="progress-line" id="progress-0-ground"></div>
                             </div>
                             <div class="audio-controls">
@@ -334,9 +314,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-0-turnguide"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-0-turnguide"></canvas>
+                                <div class="waveform-loading" id="loading-0-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-0-turnguide"></div>
                             </div>
                             <div class="audio-controls">
@@ -347,9 +326,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-0-baseline"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-0-baseline"></canvas>
+                                <div class="waveform-loading" id="loading-0-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-0-baseline"></div>
                             </div>
                             <div class="audio-controls">
@@ -360,9 +338,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-0-cascaded"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-0-cascaded"></canvas>
+                                <div class="waveform-loading" id="loading-0-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-0-cascaded"></div>
                             </div>
                             <div class="audio-controls">
@@ -376,9 +353,8 @@
                         <td class="id-column">1</td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-1-prompt"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-1-prompt"></canvas>
+                                <div class="waveform-loading" id="loading-1-prompt">Loading...</div>
                                 <div class="progress-line" id="progress-1-prompt"></div>
                             </div>
                             <div class="audio-controls">
@@ -389,9 +365,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-1-ground"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-1-ground"></canvas>
+                                <div class="waveform-loading" id="loading-1-ground">Loading...</div>
                                 <div class="progress-line" id="progress-1-ground"></div>
                             </div>
                             <div class="audio-controls">
@@ -402,9 +377,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-1-turnguide"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-1-turnguide"></canvas>
+                                <div class="waveform-loading" id="loading-1-turnguide">Loading...</div>
                                 <div class="progress-line" id="progress-1-turnguide"></div>
                             </div>
                             <div class="audio-controls">
@@ -415,9 +389,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-1-baseline"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-1-baseline"></canvas>
+                                <div class="waveform-loading" id="loading-1-baseline">Loading...</div>
                                 <div class="progress-line" id="progress-1-baseline"></div>
                             </div>
                             <div class="audio-controls">
@@ -428,9 +401,8 @@
                         </td>
                         <td>
                             <div class="waveform-container">
-                                <div class="waveform">
-                                    <div class="waveform-bars" id="waveform-1-cascaded"></div>
-                                </div>
+                                <canvas class="waveform-canvas" id="waveform-1-cascaded"></canvas>
+                                <div class="waveform-loading" id="loading-1-cascaded">Loading...</div>
                                 <div class="progress-line" id="progress-1-cascaded"></div>
                             </div>
                             <div class="audio-controls">
@@ -485,7 +457,8 @@
 
     let currentlyPlaying = null;
     let audioElements = {};
-    let waveformAnimations = {};
+    let waveformData = {};
+    let audioContext = null;
 
     function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
@@ -493,54 +466,102 @@
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
-    function createWaveformBars(containerId) {
-        const container = document.getElementById(`waveform-${containerId}`);
-        if (!container) return;
+    async function loadWaveform(audioId) {
+        const canvas = document.getElementById(`waveform-${audioId}`);
+        const loadingElement = document.getElementById(`loading-${audioId}`);
+        const errorElement = document.getElementById(`error-${audioId}`);
         
-        container.innerHTML = '';
+        if (!canvas) return;
         
-        // Create 40 bars with random heights
-        for (let i = 0; i < 40; i++) {
-            const bar = document.createElement('div');
-            bar.className = 'waveform-bar static';
-            const height = Math.random() * 60 + 10; // Random height between 10-70px
-            bar.style.height = height + 'px';
-            container.appendChild(bar);
+        try {
+            // Initialize audio context if not already done
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            // Fetch audio file
+            const response = await fetch(`audio/${audioId}.mp3`);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            
+            // Extract audio data (use first channel)
+            const channelData = audioBuffer.getChannelData(0);
+            const samples = channelData.length;
+            const canvasWidth = canvas.width = 200;
+            const canvasHeight = canvas.height = 80;
+            
+            // Calculate how many samples per pixel
+            const samplesPerPixel = Math.floor(samples / canvasWidth);
+            const waveformPoints = [];
+            
+            // Create waveform data by finding peak values for each pixel
+            for (let i = 0; i < canvasWidth; i++) {
+                const start = i * samplesPerPixel;
+                const end = start + samplesPerPixel;
+                let max = 0;
+                
+                for (let j = start; j < end && j < samples; j++) {
+                    const sample = Math.abs(channelData[j]);
+                    if (sample > max) {
+                        max = sample;
+                    }
+                }
+                
+                waveformPoints.push(max);
+            }
+            
+            // Store waveform data for progress animation
+            waveformData[audioId] = waveformPoints;
+            
+            // Draw initial waveform
+            drawWaveform(canvas, waveformPoints, 0);
+            
+            // Hide loading indicator
+            loadingElement.style.display = 'none';
+            
+        } catch (error) {
+            console.error(`Error loading waveform for ${audioId}:`, error);
+            errorElement.textContent = 'Error loading waveform';
+            loadingElement.style.display = 'none';
         }
     }
 
-    function animateWaveform(audioId, isPlaying) {
-        const container = document.getElementById(`waveform-${audioId}`);
-        if (!container) return;
+    function drawWaveform(canvas, waveformPoints, progress = 0) {
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
         
-        const bars = container.querySelectorAll('.waveform-bar');
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
         
-        if (isPlaying) {
-            // Start animation
-            waveformAnimations[audioId] = setInterval(() => {
-                bars.forEach((bar, index) => {
-                    // Create wave-like animation
-                    const time = Date.now() * 0.005;
-                    const wave = Math.sin(time + index * 0.3) * 0.5 + 0.5;
-                    const baseHeight = parseFloat(bar.style.height) || 30;
-                    const animatedHeight = baseHeight * (0.5 + wave * 0.8);
-                    
-                    bar.style.height = animatedHeight + 'px';
-                    bar.classList.remove('static');
-                    bar.classList.add('active');
-                });
-            }, 100);
-        } else {
-            // Stop animation
-            if (waveformAnimations[audioId]) {
-                clearInterval(waveformAnimations[audioId]);
-                delete waveformAnimations[audioId];
+        // Draw waveform
+        const barWidth = width / waveformPoints.length;
+        const progressIndex = Math.floor(progress * waveformPoints.length);
+        
+        for (let i = 0; i < waveformPoints.length; i++) {
+            const barHeight = waveformPoints[i] * height * 0.8; // Scale to 80% of canvas height
+            const x = i * barWidth;
+            const y = (height - barHeight) / 2;
+            
+            // Color based on progress
+            if (i <= progressIndex) {
+                ctx.fillStyle = '#3498db'; // Blue for played portion
+            } else {
+                ctx.fillStyle = '#e74c3c'; // Red for unplayed portion
             }
             
-            bars.forEach(bar => {
-                bar.classList.remove('active');
-                bar.classList.add('static');
-            });
+            ctx.fillRect(x, y, Math.max(barWidth - 1, 1), barHeight);
+        }
+    }
+
+    function updateWaveformProgress(audioId, progress) {
+        const canvas = document.getElementById(`waveform-${audioId}`);
+        if (canvas && waveformData[audioId]) {
+            drawWaveform(canvas, waveformData[audioId], progress);
         }
     }
 
@@ -576,8 +597,12 @@
             
             audioElements[audioId].addEventListener('timeupdate', () => {
                 const audio = audioElements[audioId];
-                const progress = (audio.currentTime / audio.duration) * 200; // 200px is the width
-                progressLine.style.left = progress + 'px';
+                const progress = audio.currentTime / audio.duration;
+                const progressPx = progress * 200; // 200px is the width
+                progressLine.style.left = progressPx + 'px';
+                
+                // Update waveform progress
+                updateWaveformProgress(audioId, progress);
             });
             
             audioElements[audioId].addEventListener('ended', () => {
@@ -590,7 +615,6 @@
                 button.disabled = false;
                 button.textContent = '▶ Play';
                 button.classList.remove('playing');
-                animateWaveform(audioId, false);
             });
             
             audioElements[audioId].addEventListener('canplay', () => {
@@ -604,9 +628,6 @@
         button.classList.add('playing');
         button.disabled = true; // Disable during loading
         progressLine.style.opacity = '1';
-        
-        // Start waveform animation
-        animateWaveform(audioId, true);
         
         // Play the audio
         audioElements[audioId].play().then(() => {
@@ -633,8 +654,8 @@
         progressLine.style.opacity = '0';
         progressLine.style.left = '0px';
         
-        // Stop waveform animation
-        animateWaveform(audioId, false);
+        // Reset waveform progress
+        updateWaveformProgress(audioId, 0);
         
         if (currentlyPlaying === audioId) {
             currentlyPlaying = null;
@@ -654,16 +675,17 @@
     }
 
     // Initialize waveforms and transcript display
-    document.addEventListener('DOMContentLoaded', () => {
-        // Create waveform bars for all audio samples
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Load waveforms for all audio samples
         const audioIds = [
             '0-prompt', '0-ground', '0-turnguide', '0-baseline', '0-cascaded',
             '1-prompt', '1-ground', '1-turnguide', '1-baseline', '1-cascaded'
         ];
         
-        audioIds.forEach(id => {
-            createWaveformBars(id);
-        });
+        // Load waveforms asynchronously
+        for (const id of audioIds) {
+            loadWaveform(id);
+        }
         
         showTranscript();
     });
@@ -673,9 +695,9 @@
         Object.values(audioElements).forEach(audio => {
             audio.pause();
         });
-        Object.values(waveformAnimations).forEach(animation => {
-            clearInterval(animation);
-        });
+        if (audioContext) {
+            audioContext.close();
+        }
     });
 </script>
 </body>
