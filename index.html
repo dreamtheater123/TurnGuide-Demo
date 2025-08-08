@@ -579,6 +579,38 @@
         }
     }
 
+    function seekAudio(audioId, event) {
+        // Don't seek if audio hasn't been loaded yet
+        if (!audioElements[audioId] || !waveformData[audioId]) {
+            return;
+        }
+        
+        const canvas = event.target;
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const clickProgress = x / canvas.width;
+        
+        // Clamp progress between 0 and 1
+        const progress = Math.max(0, Math.min(1, clickProgress));
+        
+        // If audio is loaded, seek to the clicked position
+        if (audioElements[audioId].duration) {
+            const seekTime = progress * audioElements[audioId].duration;
+            audioElements[audioId].currentTime = seekTime;
+            
+            // Update visual progress immediately
+            const progressLine = document.getElementById(`progress-${audioId}`);
+            const progressPx = progress * 200;
+            progressLine.style.left = progressPx + 'px';
+            updateWaveformProgress(audioId, progress);
+            
+            // If audio wasn't playing, start playing from the clicked position
+            if (currentlyPlaying !== audioId) {
+                playAudio(audioId);
+            }
+        }
+    }
+
     function playAudio(audioId) {
         const button = event.target;
         const progressLine = document.getElementById(`progress-${audioId}`);
