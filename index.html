@@ -181,6 +181,10 @@
         margin-top: 15px;
         font-family: 'Courier New', monospace;
         line-height: 1.8;
+        white-space: pre-wrap; /* Add this line to preserve line breaks */
+        word-wrap: break-word; /* Add this line for better word wrapping */
+        max-height: 300px; /* Add this line to limit height */
+        overflow-y: auto; /* Add this line for scrolling if content is too long */
     }
 
     .transcript-selector {
@@ -454,10 +458,17 @@
 <script>
     // Sample transcripts (replace with your actual transcripts)
     const transcripts = {
-        '0-prompt': `right speaker, start/end time: (72.02, 73.20), content:  they look and see who the crowd is,
-left speaker, start/end time: (73.37, 78.10), content:  Yeah Cause my brother Is really This big guy He's a bodybuilder He
-right speaker, start/end time: (73.46, 73.72), content:  and,
-right speaker, start/end time: (73.72, 74.84), content:  you know,`,
+        '0-prompt': `left speaker, start/end time: (79.18, 81.16), content:  had on a tank top Tonight We went to the club And
+left speaker, start/end time: (81.20, 83.56), content:  the little The little midget Looked out there in the
+right speaker, start/end time: (81.26, 81.50), content:  Uh-oh.
+right speaker, start/end time: (81.64, 90.08), content:  Mm-hmm.
+left speaker, start/end time: (83.56, 86.57), content:  water Cause it was like The third row back God damn
+left speaker, start/end time: (87.20, 90.96), content:  His arms My brother's got Really huge arms And he started tripping
+left speaker, start/end time: (90.96, 94.24), content:  That guy actually Come off the stage Walked his little bitty self Over
+right speaker, start/end time: (91.58, 100.94), content:  Right.
+left speaker, start/end time: (94.24, 97.20), content:  there to my brother Said this guy's arm Is bigger than my waist He
+left speaker, start/end time: (97.20, 100.30), content:  just You know He just had everybody And it was a fun It wasn't a bad
+left speaker, start/end time: (100.30, 102.70), content:  thing It was just talking about How big his arm was And that was`,
         '0-ground': 'This is the ground truth continuation of the first sample...',
         '0-turnguide': 'This is the TurnGuide continuation of the first sample...',
         '0-baseline': 'This is the baseline FD-SLM continuation of the first sample...',
