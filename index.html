@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dGSLM: Direct Generation Speech Language Model</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          background-color: #f8f9fa;
+      }
+
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+
+      header {
+          text-align: center;
+          margin-bottom: 40px;
+          background: white;
+          padding: 40px;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      h1 {
+          font-size: 2.5em;
+          color: #2c3e50;
+          margin-bottom: 20px;
+      }
+
+      .authors {
+          font-size: 1.1em;
+          color: #666;
+          margin-bottom: 20px;
+      }
+
+      .abstract {
+          background: white;
+          padding: 30px;
+          margin-bottom: 40px;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .abstract h2 {
+          color: #2c3e50;
+          margin-bottom: 15px;
+      }
+
+      .demo-section {
+          background: white;
+          padding: 30px;
+          margin-bottom: 40px;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .demo-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+      }
+
+      .demo-table th,
+      .demo-table td {
+          border: 1px solid #ddd;
+          padding: 15px;
+          text-align: center;
+          vertical-align: middle;
+      }
+
+      .demo-table th {
+          background-color: #f8f9fa;
+          font-weight: bold;
+          color: #2c3e50;
+      }
+
+      .waveform-container {
+          position: relative;
+          width: 200px;
+          height: 80px;
+          margin: 10px auto;
+          background: #f0f0f0;
+          border-radius: 5px;
+          overflow: hidden;
+      }
+
+      .waveform {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, 
+              transparent 0%, transparent 10%,
+              #e74c3c 10%, #e74c3c 12%,
+              transparent 12%, transparent 20%,
+              #e74c3c 20%, #e74c3c 25%,
+              transparent 25%, transparent 30%,
+              #e74c3c 30%, #e74c3c 32%,
+              transparent 32%, transparent 40%,
+              #e74c3c 40%, #e74c3c 45%,
+              transparent 45%, transparent 55%,
+              #e74c3c 55%, #e74c3c 60%,
+              transparent 60%, transparent 70%,
+              #e74c3c 70%, #e74c3c 72%,
+              transparent 72%, transparent 80%,
+              #e74c3c 80%, #e74c3c 85%,
+              transparent 85%, transparent 100%);
+          background-size: 20px 100%;
+      }
+
+      .progress-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 100%;
+          background: #3498db;
+          opacity: 0;
+          transition: left 0.1s ease;
+      }
+
+      .audio-controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          margin-top: 10px;
+      }
+
+      .play-btn {
+          background: #2c3e50;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.3s;
+      }
+
+      .play-btn:hover {
+          background: #34495e;
+      }
+
+      .play-btn.playing {
+          background: #e74c3c;
+      }
+
+      .transcript-section {
+          background: white;
+          padding: 30px;
+          margin-bottom: 40px;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .transcript-box {
+          background: #f8f9fa;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          padding: 20px;
+          margin-top: 15px;
+          font-family: 'Courier New', monospace;
+          line-height: 1.8;
+      }
+
+      .transcript-selector {
+          margin-bottom: 15px;
+      }
+
+      .transcript-selector select {
+          padding: 8px 12px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          font-size: 14px;
+      }
+
+      .id-column {
+          background-color: #f8f9fa;
+          font-weight: bold;
+          width: 50px;
+      }
+
+      .note {
+          background: #e8f4fd;
+          border-left: 4px solid #3498db;
+          padding: 15px;
+          margin: 20px 0;
+          border-radius: 0 5px 5px 0;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <header>
+          <h1>dGSLM: Direct Generation Speech Language Model</h1>
+          <div class="authors">
+              Author Name¹, Author Name², Author Name³<br>
+              ¹Institution 1, ²Institution 2, ³Institution 3
+          </div>
+          <div style="margin-top: 20px;">
+              <a href="#" style="margin: 0 10px; color: #3498db; text-decoration: none;">[Paper]</a>
+              <a href="#" style="margin: 0 10px; color: #3498db; text-decoration: none;">[Code]</a>
+              <a href="#" style="margin: 0 10px; color: #3498db; text-decoration: none;">[Demo]</a>
+          </div>
+      </header>
+
+      <section class="abstract">
+          <h2>Abstract</h2>
+          <p>We present dGSLM (direct Generation Speech Language Model), a system attending to both unit streams with the help of cross-attention. The dGSLM model then generates new pseudo-text and feeds them to the decoder to produce a new waveform. The entire pipeline is trained without supervision or text. Our approach demonstrates significant improvements in speech generation quality and naturalness compared to existing methods.</p>
+      </section>
+
+      <section class="demo-section">
+          <h2>Audio Demonstrations</h2>
+          <div class="note">
+              <strong>Note:</strong> The synthesized speakers are different from the original ones, but we deliberately choose speakers with the same gender as in the original speech. You will hear a ding sound at the end of the prompt duration.
+          </div>
+
+          <table class="demo-table">
+              <thead>
+                  <tr>
+                      <th rowspan="2" class="id-column">ID</th>
+                      <th>Original Speech</th>
+                      <th colspan="4">Synthesized Speech Continuation</th>
+                  </tr>
+                  <tr>
+                      <th>Prompt</th>
+                      <th>Ground Truth</th>
+                      <th>dGSLM (Continuation 1)</th>
+                      <th>dGSLM (Continuation 2)</th>
+                      <th>Cascaded Continuation</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td rowspan="2" class="id-column">0</td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-0-prompt"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('0-prompt')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-0-ground"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('0-ground')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-0-cont1"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('0-cont1')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-0-cont2"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('0-cont2')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-0-cascaded"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('0-cascaded')">▶ Play</button>
+                          </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-1-prompt"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('1-prompt')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-1-ground"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('1-ground')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-1-cont1"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('1-cont1')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-1-cont2"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('1-cont2')">▶ Play</button>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="waveform-container">
+                              <div class="waveform"></div>
+                              <div class="progress-line" id="progress-1-cascaded"></div>
+                          </div>
+                          <div class="audio-controls">
+                              <button class="play-btn" onclick="playAudio('1-cascaded')">▶ Play</button>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </section>
+
+      <section class="transcript-section">
+          <h2>Audio Transcripts</h2>
+          <div class="transcript-selector">
+              <label for="transcript-select">Select Audio Sample: </label>
+              <select id="transcript-select" onchange="showTranscript()">
+                  <option value="0-prompt">Sample 0 - Prompt</option>
+                  <option value="0-ground">Sample 0 - Ground Truth</option>
+                  <option value="0-cont1">Sample 0 - dGSLM Continuation 1</option>
+                  <option value="0-cont2">Sample 0 - dGSLM Continuation 2</option>
+                  <option value="0-cascaded">Sample 0 - Cascaded</option>
+                  <option value="1-prompt">Sample 1 - Prompt</option>
+                  <option value="1-ground">Sample 1 - Ground Truth</option>
+                  <option value="1-cont1">Sample 1 - dGSLM Continuation 1</option>
+                  <option value="1-cont2">Sample 1 - dGSLM Continuation 2</option>
+                  <option value="1-cascaded">Sample 1 - Cascaded</option>
+              </select>
+          </div>
+          <div class="transcript-box" id="transcript-display">
+              Select an audio sample to view its transcript.
+          </div>
+      </section>
+  </div>
+
+  <script>
+      // Sample transcripts (replace with your actual transcripts)
+      const transcripts = {
+          '0-prompt': 'This is the beginning of the first speech sample...',
+          '0-ground': 'This is the ground truth continuation of the first sample...',
+          '0-cont1': 'This is the first dGSLM continuation of the first sample...',
+          '0-cont2': 'This is the second dGSLM continuation of the first sample...',
+          '0-cascaded': 'This is the cascaded model continuation of the first sample...',
+          '1-prompt': 'This is the beginning of the second speech sample...',
+          '1-ground': 'This is the ground truth continuation of the second sample...',
+          '1-cont1': 'This is the first dGSLM continuation of the second sample...',
+          '1-cont2': 'This is the second dGSLM continuation of the second sample...',
+          '1-cascaded': 'This is the cascaded model continuation of the second sample...'
+      };
+
+      let currentlyPlaying = null;
+      let progressIntervals = {};
+
+      function playAudio(audioId) {
+          const button = event.target;
+          const progressLine = document.getElementById(`progress-${audioId}`);
+          
+          // Stop any currently playing audio
+          if (currentlyPlaying && currentlyPlaying !== audioId) {
+              stopAudio(currentlyPlaying);
+          }
+          
+          if (currentlyPlaying === audioId) {
+              // Pause current audio
+              stopAudio(audioId);
+              return;
+          }
+          
+          // Start playing
+          currentlyPlaying = audioId;
+          button.textContent = '⏸ Pause';
+          button.classList.add('playing');
+          progressLine.style.opacity = '1';
+          
+          // Simulate audio playback with progress animation
+          let progress = 0;
+          const duration = 3000; // 3 seconds simulation
+          const interval = 50; // Update every 50ms
+          const increment = (200 / (duration / interval)); // 200px width
+          
+          progressIntervals[audioId] = setInterval(() => {
+              progress += increment;
+              progressLine.style.left = progress + 'px';
+              
+              if (progress >= 200) {
+                  stopAudio(audioId);
+              }
+          }, interval);
+          
+          // In a real implementation, you would play the actual audio file here
+          // const audio = new Audio(`path/to/${audioId}.wav`);
+          // audio.play();
+      }
+
+      function stopAudio(audioId) {
+          const button = document.querySelector(`button[onclick="playAudio('${audioId}')"]`);
+          const progressLine = document.getElementById(`progress-${audioId}`);
+          
+          if (progressIntervals[audioId]) {
+              clearInterval(progressIntervals[audioId]);
+              delete progressIntervals[audioId];
+          }
+          
+          button.textContent = '▶ Play';
+          button.classList.remove('playing');
+          progressLine.style.opacity = '0';
+          progressLine.style.left = '0px';
+          
+          if (currentlyPlaying === audioId) {
+              currentlyPlaying = null;
+          }
+      }
+
+      function showTranscript() {
+          const select = document.getElementById('transcript-select');
+          const display = document.getElementById('transcript-display');
+          const selectedValue = select.value;
+          
+          if (transcripts[selectedValue]) {
+              display.textContent = transcripts[selectedValue];
+          } else {
+              display.textContent = 'Transcript not available for this sample.';
+          }
+      }
+
+      // Initialize transcript display
+      showTranscript();
+  </script>
+</body>
+</html>
