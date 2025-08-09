@@ -495,7 +495,373 @@
 <script>
     // Sample transcripts (replace with your actual transcripts)
     const transcripts = {
-        '0-prompt': `left speaker, start/end time: (79.18, 81.16), content:  had on a tank top Tonight We went to the club And
+        '0-prompt': `left speaker, start/end time: (0.60, 1.68), content:  dying laughing about him
+left speaker, start/end time: (2.66, 5.42), content:  when it was all about him which was good
+right speaker, start/end time: (3.46, 7.32), content:  Yeah, that's the thing.
+left speaker, start/end time: (5.66, 5.76), content:  right
+right speaker, start/end time: (7.44, 9.74), content:  That if you understand where your target audience is,
+right speaker, start/end time: (9.92, 11.56), content:  and you can arise out of them,
+left speaker, start/end time: (10.86, 14.72), content:  right
+right speaker, start/end time: (11.68, 13.68), content:  or you can be self-depreciating about yourself,
+right speaker, start/end time: (14.56, 15.70), content:  then people laugh at it.
+right speaker, start/end time: (15.82, 17.18), content:  But it's hard to play the clown.
+right speaker, start/end time: (17.36, 19.78), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.94, 21.36), content:  There's no happy clowns, you know?
+left speaker, start/end time: (22.42, 23.96), content:  yeah those crowds um
+right speaker, start/end time: (23.80, 28.28), content:  Mm-hmm.
+left speaker, start/end time: (25.08, 27.43), content:  kind of seen some people get up there too and fall over
+left speaker, start/end time: (28.30, 31.00), content:  cause the crowd they're not feeling it i mean the topic`,
+        '0-dgslm': `right speaker, start/end time: (0.00, 0.72), content:  Uh-huh, uh-huh.
+left speaker, start/end time: (0.58, 1.62), content:  dying laughing about him
+left speaker, start/end time: (2.64, 3.58), content:  when it was all about him
+left speaker, start/end time: (4.37, 5.42), content:  which was good
+right speaker, start/end time: (4.63, 7.32), content:  Yeah, I mean, that's the thing,
+left speaker, start/end time: (6.02, 10.42), content:  right
+right speaker, start/end time: (7.32, 9.76), content:  is that if you understand where your target audience is
+right speaker, start/end time: (9.94, 11.54), content:  and you get a rise out of them,
+left speaker, start/end time: (11.54, 14.66), content:  right
+right speaker, start/end time: (11.76, 13.68), content:  or you can be self-depreciating about yourself,
+right speaker, start/end time: (14.54, 15.74), content:  then people laugh at it,
+right speaker, start/end time: (15.78, 17.18), content:  but it's hard to play the clown.
+right speaker, start/end time: (17.30, 19.72), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.86, 21.34), content:  There's no happy clowns, you know.
+left speaker, start/end time: (21.69, 23.66), content:  yeah those crawls
+right speaker, start/end time: (22.90, 24.60), content:  Uh-huh.
+left speaker, start/end time: (25.10, 26.34), content:  I've seen some people get up there too
+left speaker, start/end time: (26.52, 27.36), content:  and fold over
+left speaker, start/end time: (28.28, 30.80), content:  because of the crawl they're not feeling the language in that
+right speaker, start/end time: (30.00, 30.10), content:  Right,
+left speaker, start/end time: (30.80, 38.56), content:  way oh oh yeah yeah oh that's so many ways do you have with
+right speaker, start/end time: (30.84, 31.20), content:  right.
+right speaker, start/end time: (31.82, 32.90), content:  That's the middle card,
+right speaker, start/end time: (32.96, 33.96), content:  just their own area,
+right speaker, start/end time: (34.10, 34.90), content:  and by the cards,
+right speaker, start/end time: (34.94, 35.56), content:  my cards.
+right speaker, start/end time: (36.06, 38.12), content:  Uh-huh.
+right speaker, start/end time: (38.20, 41.36), content:  Oh, yeah.
+left speaker, start/end time: (38.56, 40.48), content:  that and when you say hey you guys just said you moved to an
+left speaker, start/end time: (41.40, 42.38), content:  Albasin high school
+right speaker, start/end time: (41.68, 43.50), content:  Oh, yeah.
+left speaker, start/end time: (43.36, 45.34), content:  yeah the two other souls above that happens
+right speaker, start/end time: (43.74, 46.08), content:  Uh-huh.
+left speaker, start/end time: (46.63, 49.56), content:  so they need to be up at three or five to make up nowadays
+right speaker, start/end time: (47.88, 50.48), content:  Uh-huh.
+right speaker, start/end time: (50.48, 52.22), content:  No, we just got to make them more man-yard.
+left speaker, start/end time: (52.40, 55.42), content:  oh see oh oh but then they go to the
+right speaker, start/end time: (52.56, 54.00), content:  Yeah,
+left speaker, start/end time: (55.42, 57.00), content:  other side of your city the same way so
+right speaker, start/end time: (57.72, 58.30), content:  it's like situation.
+left speaker, start/end time: (58.66, 61.67), content:  oh I don't I know what you said if you do that right I think
+right speaker, start/end time: (60.00, 60.10), content:  Yeah.
+left speaker, start/end time: (61.92, 64.84), content:  you do men ways of doctors and am more now you close language
+right speaker, start/end time: (65.34, 66.98), content:  Now I went to six-month-old.
+right speaker, start/end time: (67.20, 68.92), content:  Yeah.
+left speaker, start/end time: (67.34, 70.54), content:  oh yeah well see your child it's a bird was it close
+left speaker, start/end time: (71.33, 73.66), content:  and then and and I get more I live in New Jersey
+left speaker, start/end time: (74.60, 76.12), content:  my grocery ends uh and uh
+right speaker, start/end time: (75.62, 76.46), content:  That's some of them.
+right speaker, start/end time: (76.50, 78.86), content:  I don't talk about hard-in-Jersey mind, so it's
+left speaker, start/end time: (77.18, 77.82), content:  no cool
+left speaker, start/end time: (79.32, 81.44), content:  well that yeah I get a lot of greens and stuff up I'm
+right speaker, start/end time: (79.40, 80.18), content:  hard to figure out.
+left speaker, start/end time: (81.44, 83.74), content:  punishing sitter just crawl stuff about other things
+left speaker, start/end time: (83.88, 87.40), content:  like that you know any calls I just saw that you crossed
+left speaker, start/end time: (87.58, 88.94), content:  all the more away in a more away in order
+right speaker, start/end time: (90.00, 91.70), content:  Yeah, but then you can do it.
+right speaker, start/end time: (91.84, 95.14), content:  Probably.
+left speaker, start/end time: (92.16, 94.62), content:  yeah I everybody go to Yuba Jersey
+left speaker, start/end time: (95.16, 97.22), content:  yeah you can make it up or you can figure it
+left speaker, start/end time: (97.26, 98.96), content:  out any problem it can't get everything you know
+left speaker, start/end time: (100.34, 102.80), content:  but then away they have to make it up and well so I see if
+right speaker, start/end time: (100.46, 105.20), content:  Uh-huh.
+left speaker, start/end time: (102.88, 104.58), content:  somebody's could get from these kind of get there at all over
+left speaker, start/end time: (105.64, 108.16), content:  or you could yeah but everybody do full it out to and I felt
+left speaker, start/end time: (108.18, 110.88), content:  out to send myself a once it was I doing green it out the call
+right speaker, start/end time: (110.94, 111.90), content:  Well, I'm just okay.
+left speaker, start/end time: (111.27, 115.10), content:  and can she's it you saw you so you don't get some shit that's
+right speaker, start/end time: (112.14, 112.82), content:  I'm sorry.
+left speaker, start/end time: (115.10, 117.54), content:  just catered you don't give them a buy your money so so you
+right speaker, start/end time: (116.68, 118.74), content:  No, they trawl talking about it.
+left speaker, start/end time: (117.56, 118.22), content:  get on a rainbow
+right speaker, start/end time: (118.80, 119.64), content:  They trawl cards later.`,
+        '0-sci': `right speaker, start/end time: (0.00, 0.22), content:  Mm-hmm.
+right speaker, start/end time: (0.44, 0.76), content:  Mm-hmm.
+left speaker, start/end time: (0.60, 1.66), content:  Darn laughing about him
+left speaker, start/end time: (2.64, 5.44), content:  when it was all about him which was good
+right speaker, start/end time: (4.60, 5.40), content:  Yeah,
+left speaker, start/end time: (5.68, 10.34), content:  right
+right speaker, start/end time: (6.07, 7.32), content:  that's the thing,
+right speaker, start/end time: (7.32, 9.78), content:  is that if you understand where your target audience is,
+right speaker, start/end time: (9.94, 11.58), content:  and you get a rise out of them,
+left speaker, start/end time: (10.84, 14.72), content:  right
+right speaker, start/end time: (11.70, 13.70), content:  or you can be self-depreciating about yourself,
+right speaker, start/end time: (14.36, 15.72), content:  then people laugh at it,
+right speaker, start/end time: (15.80, 17.18), content:  but it's hard to play the clown.
+right speaker, start/end time: (17.34, 19.76), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.88, 21.34), content:  There's no happy clowns, you know?
+left speaker, start/end time: (22.88, 23.96), content:  yeah those crowds um
+left speaker, start/end time: (25.12, 27.40), content:  I'm seeing some people get up there too and fall over
+right speaker, start/end time: (27.98, 28.28), content:  Mm-hmm.
+left speaker, start/end time: (28.58, 30.58), content:  cause of the crowd and not feeling it you
+right speaker, start/end time: (30.00, 30.10), content:  Yeah.
+left speaker, start/end time: (32.28, 33.70), content:  know and that's kind of I
+right speaker, start/end time: (33.98, 37.34), content:  Yeah.
+left speaker, start/end time: (34.30, 37.36), content:  mean if somebody is dead that's one thing
+left speaker, start/end time: (37.36, 41.58), content:  but if somebody's um they say they're
+right speaker, start/end time: (38.02, 38.24), content:  Yeah.
+left speaker, start/end time: (42.32, 45.02), content:  not feeling it or they don't have the same opinion as
+left speaker, start/end time: (45.02, 47.26), content:  I have about it you know that's a different story but
+left speaker, start/end time: (48.24, 51.92), content:  hats on my soles over you know for for sin or something like
+left speaker, start/end time: (51.92, 54.90), content:  that you know and you don't know where they coming from and
+left speaker, start/end time: (54.90, 57.76), content:  it's kind of a hard stand so you know crowds are like that.
+left speaker, start/end time: (57.80, 61.40), content:  They like victimize victims of situations or crimes or something
+left speaker, start/end time: (61.52, 65.82), content:  and come on and sometimes they say you know they come on and you
+right speaker, start/end time: (61.56, 62.06), content:  Uh-huh.
+left speaker, start/end time: (66.80, 68.46), content:  know not really
+left speaker, start/end time: (70.02, 70.12), content:  going
+left speaker, start/end time: (71.06, 72.92), content:  stressing on the comedy act that they want
+left speaker, start/end time: (72.92, 75.06), content:  to stress on the you know the sadness.
+right speaker, start/end time: (73.97, 76.60), content:  Oh, yeah, I think they're talking about sadness,
+right speaker, start/end time: (76.90, 78.48), content:  because if someone's get arrested,
+right speaker, start/end time: (78.66, 79.99), content:  or someone's got a problem,
+right speaker, start/end time: (81.34, 83.00), content:  or someone's dying, you know what I mean?
+left speaker, start/end time: (82.80, 83.30), content:  right
+right speaker, start/end time: (83.16, 85.46), content:  That's not the time to just bring in a comedian on,
+left speaker, start/end time: (85.48, 86.62), content:  that's not the time
+right speaker, start/end time: (85.66, 87.22), content:  in my opinion.
+left speaker, start/end time: (88.36, 89.16), content:  that's not the time
+right speaker, start/end time: (88.88, 89.48), content:  And,
+right speaker, start/end time: (89.70, 90.10), content:  you know,
+right speaker, start/end time: (90.22, 91.14), content:  it's,
+right speaker, start/end time: (91.18, 91.46), content:  it's,
+right speaker, start/end time: (91.56, 92.18), content:  it's comedians,
+right speaker, start/end time: (92.22, 92.54), content:  though,
+right speaker, start/end time: (92.62, 92.72), content:  they,
+left speaker, start/end time: (92.98, 96.04), content:  right yeah right
+right speaker, start/end time: (93.68, 94.90), content:  they have to be,
+right speaker, start/end time: (94.98, 97.32), content:  they go on a certain kind of a lens.
+right speaker, start/end time: (97.48, 98.00), content:  It's not,
+right speaker, start/end time: (98.04, 102.40), content:  it's not everything that happens on an everyday basis.
+right speaker, start/end time: (102.52, 102.66), content:  They,
+right speaker, start/end time: (103.04, 106.36), content:  they just pick out what might be funny about it.
+right speaker, start/end time: (106.42, 106.90), content:  And sometimes,
+right speaker, start/end time: (107.19, 110.62), content:  they might not even pick out what might be funny about it.
+left speaker, start/end time: (109.10, 113.10), content:  yeah
+right speaker, start/end time: (110.66, 112.42), content:  They just pick something like a certain scenario.
+right speaker, start/end time: (112.69, 115.22), content:  And they might just start off with a certain scenario,
+left speaker, start/end time: (113.44, 117.88), content:  yeah
+right speaker, start/end time: (115.30, 117.06), content:  and then just kind of floor it out,
+right speaker, start/end time: (117.10, 117.36), content:  you know?
+right speaker, start/end time: (117.91, 119.46), content:  Like, some guys, like,`,
+        '0-moshi': `right speaker, start/end time: (0.40, 0.78), content:  Yeah,
+left speaker, start/end time: (0.60, 5.44), content:  Darn laughing about him when it was all about him which was good.
+left speaker, start/end time: (5.64, 5.74), content:  Yeah,
+left speaker, start/end time: (5.86, 6.14), content:  I mean,
+right speaker, start/end time: (6.07, 7.32), content:  that's the thing,
+left speaker, start/end time: (6.39, 9.26), content:  what she's saying is in order to get what it's all about.
+right speaker, start/end time: (7.36, 9.08), content:  that if you understand where your target
+right speaker, start/end time: (9.08, 11.60), content:  audience is and you can arise out of them,
+left speaker, start/end time: (9.82, 10.46), content:  Right.
+right speaker, start/end time: (11.70, 13.70), content:  or you can be self-depreciating about yourself,
+left speaker, start/end time: (12.16, 14.70), content:  Right.
+right speaker, start/end time: (14.20, 15.76), content:  then people laugh at it,
+right speaker, start/end time: (15.82, 17.16), content:  but it's hard to play the clown.
+right speaker, start/end time: (17.38, 19.78), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.90, 21.36), content:  There's no happy clowns, you know?
+left speaker, start/end time: (22.46, 24.02), content:  Yeah, those crowds, um,
+left speaker, start/end time: (25.10, 27.68), content:  kind of seeing some people get up there too and fall over because
+right speaker, start/end time: (27.98, 28.30), content:  Mm-hmm.
+left speaker, start/end time: (28.72, 30.06), content:  of the crowd and you're not feeling it.
+right speaker, start/end time: (30.36, 30.78), content:  Yeah,
+left speaker, start/end time: (30.88, 32.36), content:  You get a real big crowd though,
+left speaker, start/end time: (32.65, 34.16), content:  you can get them to go,
+left speaker, start/end time: (34.24, 34.38), content:  yeah.
+right speaker, start/end time: (35.24, 36.24), content:  I'll tell you, but...
+left speaker, start/end time: (35.78, 36.56), content:  Especially if it's a crowd,
+left speaker, start/end time: (36.62, 37.84), content:  it's a small crowd though.
+right speaker, start/end time: (37.00, 38.22), content:  Yeah,
+left speaker, start/end time: (38.76, 39.38), content:  They're more likely.
+right speaker, start/end time: (38.76, 40.42), content:  but there's other topics.
+left speaker, start/end time: (39.82, 40.27), content:  Right.
+right speaker, start/end time: (40.82, 41.24), content:  If,
+right speaker, start/end time: (41.36, 41.60), content:  say,
+right speaker, start/end time: (41.64, 42.86), content:  you have a group of people,
+right speaker, start/end time: (42.92, 44.82), content:  like Mexicans or Pakistan,
+right speaker, start/end time: (45.62, 46.44), content:  there's a certain topic,
+right speaker, start/end time: (46.58, 47.58), content:  they won't laugh at it,
+right speaker, start/end time: (47.62, 47.88), content:  you know?
+right speaker, start/end time: (48.82, 49.34), content:  And that's hard.
+right speaker, start/end time: (50.72, 51.66), content:  Yeah, it is.
+right speaker, start/end time: (51.70, 52.42), content:  It's hard to read them.
+right speaker, start/end time: (52.66, 53.64), content:  Hmm.
+right speaker, start/end time: (54.86, 55.14), content:  Oh.
+right speaker, start/end time: (56.12, 57.04), content:  Yeah.
+left speaker, start/end time: (56.70, 57.84), content:  But it's kind of funny,
+left speaker, start/end time: (57.86, 60.00), content:  I had to go to a comedy show and they
+right speaker, start/end time: (59.76, 62.98), content:  Yeah?
+left speaker, start/end time: (60.41, 61.92), content:  show this thing and they were like this.
+left speaker, start/end time: (63.18, 67.14), content:  They actually had, um, someone, a little person
+left speaker, start/end time: (67.78, 68.66), content:  with a little hat, um,
+left speaker, start/end time: (69.76, 72.78), content:  some little, um, uh,
+left speaker, start/end time: (73.74, 76.28), content:  like they showed all the types of people like infant into the,
+left speaker, start/end time: (76.46, 76.56), content:  um,
+left speaker, start/end time: (77.30, 78.54), content:  and he said the little guys.
+right speaker, start/end time: (78.54, 81.24), content:  No.
+left speaker, start/end time: (79.04, 81.68), content:  We're a big group and he went to this comedy show
+left speaker, start/end time: (81.80, 85.14), content:  and he said all the jokes that come out of his mouth
+left speaker, start/end time: (85.96, 87.80), content:  are you too short and all you can do
+left speaker, start/end time: (87.80, 90.84), content:  is sit or sit in a cone and rub it out.
+left speaker, start/end time: (91.08, 92.16), content:  Yeah,
+right speaker, start/end time: (91.50, 94.56), content:  right
+left speaker, start/end time: (92.24, 92.56), content:  I mean,
+left speaker, start/end time: (92.58, 95.18), content:  he's just still getting totally literally and it was kind of funny.
+right speaker, start/end time: (95.04, 100.96), content:  yeah
+left speaker, start/end time: (96.36, 96.64), content:  I mean,
+left speaker, start/end time: (96.66, 96.76), content:  I,
+left speaker, start/end time: (97.18, 98.96), content:  I don't know because if I said that to him,
+left speaker, start/end time: (99.00, 100.26), content:  I would be fired from his job.
+right speaker, start/end time: (101.38, 102.56), content:  yeah
+right speaker, start/end time: (103.12, 104.22), content:  it's difficult
+right speaker, start/end time: (105.08, 105.18), content:  but
+right speaker, start/end time: (106.00, 106.68), content:  when the comedian
+right speaker, start/end time: (106.90, 107.94), content:  gets the people rolling
+right speaker, start/end time: (108.75, 110.82), content:  you know then you can roll
+left speaker, start/end time: (110.20, 112.28), content:  Okay.
+right speaker, start/end time: (110.94, 113.00), content:  right into it and people at times
+right speaker, start/end time: (113.12, 114.88), content:  that's been dangerous so when people are rolling
+right speaker, start/end time: (115.04, 115.32), content:  with
+right speaker, start/end time: (115.84, 116.32), content:  uh if
+right speaker, start/end time: (116.94, 119.50), content:  if it got out of hand and they're making you know`,
+        '0-turnguide': `left speaker, start/end time: (0.60, 1.68), content:  dying laughing about him
+left speaker, start/end time: (2.66, 5.42), content:  when it was all about him which was good
+right speaker, start/end time: (3.46, 7.32), content:  Yeah, that's the thing.
+left speaker, start/end time: (5.66, 5.76), content:  right
+right speaker, start/end time: (7.44, 9.74), content:  That if you understand where your target audience is,
+right speaker, start/end time: (9.92, 11.56), content:  and you can arise out of them,
+left speaker, start/end time: (10.86, 14.72), content:  right
+right speaker, start/end time: (11.68, 13.68), content:  or you can be self-depreciating about yourself,
+right speaker, start/end time: (14.56, 15.70), content:  then people laugh at it.
+right speaker, start/end time: (15.82, 17.18), content:  But it's hard to play the clown.
+right speaker, start/end time: (17.36, 19.78), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.94, 21.36), content:  There's no happy clowns, you know?
+left speaker, start/end time: (22.42, 23.96), content:  yeah those crowds um
+right speaker, start/end time: (23.80, 28.28), content:  Mm-hmm.
+left speaker, start/end time: (25.08, 27.43), content:  kind of seen some people get up there too and fall over
+left speaker, start/end time: (28.30, 31.00), content:  cause the crowd they're not feeling it i mean the topic
+left speaker, start/end time: (31.10, 32.98), content:  that they're talking about they're not really into it
+left speaker, start/end time: (33.94, 35.80), content:  and it takes some real skill just talking in front
+left speaker, start/end time: (35.80, 37.88), content:  of the crowd especially being in a position that uh
+left speaker, start/end time: (39.54, 41.60), content:  that you're getting paid for it people are looking
+left speaker, start/end time: (41.60, 43.84), content:  at you to be funny or give them something to laugh
+right speaker, start/end time: (42.94, 43.30), content:  Daddy
+left speaker, start/end time: (43.96, 45.80), content:  about and i guess you have to really have
+left speaker, start/end time: (45.80, 47.60), content:  a lot of heart to just go up there and uh
+right speaker, start/end time: (48.62, 50.12), content:  is all about the hard work.
+left speaker, start/end time: (48.72, 51.40), content:  i guess you have to have an open mind to just go
+left speaker, start/end time: (51.40, 53.14), content:  there and start telling jokes because a lot of
+left speaker, start/end time: (53.26, 53.68), content:  times you'll
+right speaker, start/end time: (53.42, 54.30), content:  That's a lot of hard work.
+left speaker, start/end time: (54.70, 56.50), content:  you'll be telling a joke and then they'll be listening
+left speaker, start/end time: (56.50, 59.92), content:  to it and you can see some some people they'll start
+left speaker, start/end time: (59.92, 62.42), content:  laughing and some people they won't so you have to have a
+right speaker, start/end time: (60.00, 60.14), content:  Well,
+left speaker, start/end time: (63.62, 65.84), content:  really strong character to just keep going and
+left speaker, start/end time: (66.60, 69.80), content:  not take anything personal and then it's a matter of if
+right speaker, start/end time: (69.04, 71.98), content:  I think one thing that I think a lot of comedians that I've seen...
+left speaker, start/end time: (69.86, 72.22), content:  if it's just one person that you're telling it to and
+left speaker, start/end time: (72.22, 75.49), content:  they're not laughing you have to say okay you know what this
+left speaker, start/end time: (76.31, 78.70), content:  doesn't work for you but maybe it will for someone else
+left speaker, start/end time: (79.36, 83.14), content:  but you can't stop telling it to the world because i don't know
+left speaker, start/end time: (83.36, 88.52), content:  some jokes you have to be open-minded some people um i
+left speaker, start/end time: (89.68, 92.60), content:  don't know some people can take jokes and turn it around right off
+left speaker, start/end time: (93.20, 96.76), content:  and then some people can't so you have to be you have to be
+left speaker, start/end time: (96.76, 100.82), content:  sensitive to that as a comedian you know somebody could take it
+right speaker, start/end time: (97.29, 97.64), content:  Yeah,
+right speaker, start/end time: (97.92, 98.52), content:  I mean,
+right speaker, start/end time: (98.52, 99.34), content:  you know,
+right speaker, start/end time: (99.36, 100.64), content:  if somebody can take it in stride,
+right speaker, start/end time: (100.68, 100.98), content:  it's great.
+right speaker, start/end time: (101.10, 102.44), content:  But if they really are hurt,
+right speaker, start/end time: (102.52, 102.98), content:  you just say,
+right speaker, start/end time: (103.02, 103.20), content:  you know,
+right speaker, start/end time: (103.22, 104.32), content:  you don't have to take it that way.
+right speaker, start/end time: (104.38, 107.00), content:  But you don't have to sit there and make it a personal attack.
+right speaker, start/end time: (107.12, 108.28), content:  That's what a lot of the people...
+right speaker, start/end time: (108.46, 111.04), content:  The audiences that they're talking to is...
+right speaker, start/end time: (111.10, 112.30), content:  That's what they're getting at.
+right speaker, start/end time: (112.40, 112.60), content:  I mean,
+right speaker, start/end time: (113.01, 114.20), content:  that's why you get up there,
+right speaker, start/end time: (114.24, 115.18), content:  you have something to say,
+left speaker, start/end time: (115.20, 115.64), content:  you
+right speaker, start/end time: (115.30, 117.20), content:  and you want the people to either laugh at it,
+right speaker, start/end time: (117.24, 118.50), content:  you want to get across your point.
+right speaker, start/end time: (118.60, 119.56), content:  You don't have to sit there and make it a personal attack.`,
+        '0-ground': `right speaker, start/end time: (0.00, 0.70), content:  Mm-hmm, mm-hmm.
+left speaker, start/end time: (0.62, 1.70), content:  Dying laughing about him
+left speaker, start/end time: (2.24, 3.50), content:  When it was all about him
+right speaker, start/end time: (2.25, 7.32), content:  Yeah, that's the thing,
+left speaker, start/end time: (4.29, 5.44), content:  Which was good
+left speaker, start/end time: (5.80, 10.34), content:  Right
+right speaker, start/end time: (7.32, 9.74), content:  is that if you understand where your target audience is
+right speaker, start/end time: (9.92, 11.52), content:  and you get a rise out of them,
+left speaker, start/end time: (11.28, 14.70), content:  Right
+right speaker, start/end time: (11.70, 13.68), content:  or you can be self-depreciating about yourself,
+right speaker, start/end time: (14.58, 15.64), content:  then people laugh at it.
+right speaker, start/end time: (15.86, 17.16), content:  But it's hard to play the clown.
+right speaker, start/end time: (17.32, 19.74), content:  I mean, that's a hard, hard thing.
+right speaker, start/end time: (19.92, 21.34), content:  There's no happy clowns, you know?
+left speaker, start/end time: (22.21, 23.46), content:  Yeah those crowds
+right speaker, start/end time: (22.62, 28.26), content:  Mm-hmm.
+left speaker, start/end time: (24.75, 26.36), content:  I seen some people get up there too
+left speaker, start/end time: (26.54, 27.34), content:  And fall over
+left speaker, start/end time: (28.15, 29.10), content:  Cause the crowd
+left speaker, start/end time: (29.24, 30.00), content:  They not feeling it
+right speaker, start/end time: (30.00, 30.10), content:  Right.
+left speaker, start/end time: (30.12, 30.97), content:  I mean the topic
+right speaker, start/end time: (31.04, 33.28), content:  Right.
+left speaker, start/end time: (31.10, 31.90), content:  They talking about it
+left speaker, start/end time: (32.00, 33.02), content:  People don't want to hear about it
+left speaker, start/end time: (33.18, 33.60), content:  Right
+left speaker, start/end time: (33.60, 34.90), content:  And they start targeting
+right speaker, start/end time: (33.72, 36.96), content:  Right.
+left speaker, start/end time: (34.96, 35.54), content:  All kinds of people
+left speaker, start/end time: (35.54, 36.38), content:  They try everything in
+left speaker, start/end time: (36.38, 37.06), content:  But it don't work
+right speaker, start/end time: (37.10, 37.20), content:  Well,
+left speaker, start/end time: (37.26, 37.94), content:  But yeah
+left speaker, start/end time: (38.22, 39.48), content:  You gotta say something
+right speaker, start/end time: (39.04, 41.66), content:  especially in regards to,
+left speaker, start/end time: (39.56, 39.74), content:  That's
+left speaker, start/end time: (39.92, 45.94), content:  Yeah
+right speaker, start/end time: (41.66, 41.74), content:  like,
+right speaker, start/end time: (41.76, 42.80), content:  you go back in the day,
+right speaker, start/end time: (42.84, 43.84), content:  you look at a guy like Rickles,
+right speaker, start/end time: (44.08, 44.40), content:  and,
+right speaker, start/end time: (44.46, 45.38), content:  you know,
+right speaker, start/end time: (45.40, 46.28), content:  he'd do every
+right speaker, start/end time: (47.90, 50.28), content:  opportunity to insult somebody, you know?
+right speaker, start/end time: (50.76, 51.70), content:  He would do that,
+right speaker, start/end time: (51.72, 53.22), content:  but make an equal opportunity one,
+right speaker, start/end time: (53.36, 53.58), content:  you know?
+left speaker, start/end time: (54.20, 56.30), content:  Yeah
+left speaker, start/end time: (56.44, 57.02), content:  The best thing about
+left speaker, start/end time: (57.20, 58.60), content:  Being in the comedy clubs If you don't
+left speaker, start/end time: (58.60, 60.02), content:  want to get targeted Don't be up front
+right speaker, start/end time: (60.18, 61.80), content:  Oh. Yeah,
+left speaker, start/end time: (61.22, 63.14), content:  Very
+right speaker, start/end time: (62.98, 64.32), content:  I would sit in the back on that one.
+left speaker, start/end time: (64.76, 68.76), content:  bad Always where There's no light Cause if they see you If they can
+right speaker, start/end time: (67.23, 67.68), content:  Well,
+left speaker, start/end time: (68.76, 71.30), content:  see you They gonna They gonna mess with you You can believe that
+right speaker, start/end time: (71.06, 71.78), content:  they size it up.
+right speaker, start/end time: (71.82, 72.00), content:  I mean,
+right speaker, start/end time: (72.02, 73.20), content:  they look and see who the crowd is,
+left speaker, start/end time: (73.37, 78.10), content:  Yeah Cause my brother Is really This big guy He's a bodybuilder He
+right speaker, start/end time: (73.46, 73.72), content:  and,
+right speaker, start/end time: (73.72, 74.84), content:  you know,
+right speaker, start/end time: (74.90, 75.28), content:  he...
+right speaker, start/end time: (78.18, 78.44), content:  Uh-huh.
+left speaker, start/end time: (79.18, 81.16), content:  had on a tank top Tonight We went to the club And
 left speaker, start/end time: (81.20, 83.56), content:  the little The little midget Looked out there in the
 right speaker, start/end time: (81.26, 81.50), content:  Uh-oh.
 right speaker, start/end time: (81.64, 90.08), content:  Mm-hmm.
@@ -505,18 +871,414 @@ left speaker, start/end time: (90.96, 94.24), content:  That guy actually Come o
 right speaker, start/end time: (91.58, 100.94), content:  Right.
 left speaker, start/end time: (94.24, 97.20), content:  there to my brother Said this guy's arm Is bigger than my waist He
 left speaker, start/end time: (97.20, 100.30), content:  just You know He just had everybody And it was a fun It wasn't a bad
-left speaker, start/end time: (100.30, 102.70), content:  thing It was just talking about How big his arm was And that was`,
-        '0-dgslm': `This is the dGSLM continuation of the first sample...`,
-        '0-sci': `This is the SCI continuation of the first sample...`,
-        '0-moshi': `This is the Moshi TS continuation of the first sample...`,
-        '0-turnguide': `This is the TurnGuide continuation of the first sample...`,
-        '0-ground': `This is the ground truth continuation of the first sample...`,
-        '1-prompt': `This is the beginning of the second speech sample...`,
-        '1-dgslm': `This is the dGSLM continuation of the second sample...`,
-        '1-sci': `This is the SCI continuation of the second sample...`,
-        '1-moshi': `This is the Moshi TS continuation of the second sample...`,
-        '1-turnguide': `This is the TurnGuide continuation of the second sample...`,
-        '1-ground': `This is the ground truth continuation of the second sample...`
+left speaker, start/end time: (100.30, 102.70), content:  thing It was just talking about How big his arm was And that was
+right speaker, start/end time: (101.32, 102.76), content:  Right.
+left speaker, start/end time: (102.70, 105.52), content:  humor for everybody Everybody started laughing at that Because He was
+right speaker, start/end time: (104.12, 108.20), content:  Mm-hmm.
+left speaker, start/end time: (105.52, 108.84), content:  talking about Well this guy's arm Is bigger than my leg So I mean
+left speaker, start/end time: (109.04, 116.38), content:  It's pretty cool Yeah So Humor I don't know anything else About humor
+right speaker, start/end time: (112.38, 112.74), content:  Mm-hmm.
+left speaker, start/end time: (117.20, 119.88), content:  I've been out of school 18 years I don't have to use`,
+        '1-prompt': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth?
+left speaker, start/end time: (0.60, 1.86), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.20, 3.40), content:  I live in Tarzana, California.
+right speaker, start/end time: (2.20, 5.84), content:  Mrs. Kenneth?
+left speaker, start/end time: (7.79, 8.78), content:  How you doing today?
+right speaker, start/end time: (9.18, 9.68), content:  How are you doing?
+left speaker, start/end time: (9.62, 10.36), content:  Okay.
+right speaker, start/end time: (11.62, 14.48), content:  In Virginia, Hawaii, California?
+left speaker, start/end time: (11.96, 12.88), content:  Whereabouts you located, sir?
+left speaker, start/end time: (14.54, 16.52), content:  Yeah, Tarzana, California.
+left speaker, start/end time: (16.64, 22.16), content:  About 18 miles outside of the downtown Los Angeles.
+right speaker, start/end time: (22.21, 24.44), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (23.12, 23.60), content:  We sit at...
+left speaker, start/end time: (24.90, 25.30), content:  Pardon me, sir?
+right speaker, start/end time: (25.56, 26.70), content:  When did you sign up for this?
+left speaker, start/end time: (26.20, 27.50), content:  This morning?
+right speaker, start/end time: (27.68, 28.28), content:  Okay.`,
+        '1-dgslm': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth.
+left speaker, start/end time: (0.62, 1.86), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.20, 3.32), content:  I live in Tarzana, California.
+right speaker, start/end time: (4.65, 5.94), content:  This is Kenneth.
+left speaker, start/end time: (7.95, 8.74), content:  How are you doing today?
+right speaker, start/end time: (8.94, 9.68), content:  Hi, how are you doing?
+left speaker, start/end time: (9.64, 10.48), content:  Oh, okay.
+left speaker, start/end time: (12.02, 12.82), content:  Whereabouts are you located, sir?
+right speaker, start/end time: (12.30, 14.52), content:  And Virginia, how about you, California?
+left speaker, start/end time: (14.68, 17.42), content:  Yeah, Tarzana, California is about
+left speaker, start/end time: (17.94, 21.84), content:  18 miles outside of the downtown Los Angeles.
+right speaker, start/end time: (22.22, 24.40), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (24.18, 25.30), content:  Pardon me, sir.
+right speaker, start/end time: (25.31, 26.66), content:  When did you sign up for this?
+left speaker, start/end time: (26.24, 27.48), content:  This morning.
+right speaker, start/end time: (27.26, 28.24), content:  Okay.
+right speaker, start/end time: (30.00, 30.10), content:  Sport,
+right speaker, start/end time: (30.72, 32.34), content:  you sexed Affirmative Adger,
+right speaker, start/end time: (32.38, 33.16), content:  came over in New York.
+left speaker, start/end time: (32.95, 34.32), content:  Well, we send it all days.
+right speaker, start/end time: (34.34, 39.10), content:  Sorry.
+left speaker, start/end time: (34.96, 36.26), content:  And we find out that one's L.A.
+left speaker, start/end time: (36.28, 36.92), content:  rent here in the car
+left speaker, start/end time: (36.92, 38.04), content:  and send him some out of California.
+left speaker, start/end time: (39.50, 41.88), content:  But I get $3, $3 try, and stuff like that.
+right speaker, start/end time: (40.68, 41.84), content:  Uh-huh.
+left speaker, start/end time: (41.96, 43.42), content:  This person here in the car and sends her.
+right speaker, start/end time: (42.98, 44.80), content:  Oh, God.
+left speaker, start/end time: (45.22, 49.08), content:  No, about $3.
+right speaker, start/end time: (45.40, 45.62), content:  Oh,
+right speaker, start/end time: (45.70, 47.20), content:  where did you go to walk and you don't know where?
+left speaker, start/end time: (49.40, 49.60), content:  And,
+left speaker, start/end time: (49.68, 49.84), content:  you know,
+left speaker, start/end time: (49.86, 50.96), content:  once my kid's after sentiment,
+left speaker, start/end time: (51.06, 51.22), content:  it's...
+right speaker, start/end time: (51.36, 51.66), content:  Hi,
+right speaker, start/end time: (51.84, 53.26), content:  when I need to go out and see a vibe or temperatary,
+left speaker, start/end time: (52.52, 53.12), content:  Oh.
+right speaker, start/end time: (54.05, 55.50), content:  I'm probably not out the way.
+left speaker, start/end time: (55.80, 56.22), content:  And it's...
+right speaker, start/end time: (55.86, 57.65), content:  It's like how I forget my kids know it's my father,
+right speaker, start/end time: (57.72, 58.06), content:  though I try.
+left speaker, start/end time: (58.37, 59.92), content:  Oh, in the past...
+right speaker, start/end time: (60.00, 62.42), content:  Ha, ha, ha, ha, ha, ha, ha, ha, ha, ha, ha, ha.
+left speaker, start/end time: (60.59, 61.96), content:  That's in sentiment, it's the crazy.
+right speaker, start/end time: (63.16, 63.64), content:  Same L.A.
+right speaker, start/end time: (63.66, 64.14), content:  out, L.A.
+left speaker, start/end time: (64.14, 65.04), content:  I can't remember L.A.
+right speaker, start/end time: (65.40, 65.94), content:  L.A., okay.
+right speaker, start/end time: (66.10, 67.74), content:  And they said, what, you're looking out to it?
+left speaker, start/end time: (66.55, 68.09), content:  I like getting football at a university.
+right speaker, start/end time: (67.76, 67.86), content:  Yeah,
+left speaker, start/end time: (68.64, 71.12), content:  Right.
+right speaker, start/end time: (68.80, 69.08), content:  they said,
+right speaker, start/end time: (69.16, 70.30), content:  we're going to get a wedding for an air city,
+right speaker, start/end time: (70.38, 70.74), content:  a town,
+right speaker, start/end time: (70.82, 71.76), content:  and picture days.
+left speaker, start/end time: (71.78, 73.00), content:  They generally got in college football.
+right speaker, start/end time: (71.96, 72.74), content:  They
+right speaker, start/end time: (73.52, 74.44), content:  can call, they get that.
+left speaker, start/end time: (73.56, 75.40), content:  Right.
+right speaker, start/end time: (75.16, 76.54), content:  They can call me and they said,
+right speaker, start/end time: (76.56, 76.92), content:  you sports,
+right speaker, start/end time: (76.98, 77.82), content:  my other job and
+right speaker, start/end time: (78.58, 79.66), content:  your job's going on it.
+right speaker, start/end time: (79.70, 81.70), content:  It would be, you'd be there to float about it.
+left speaker, start/end time: (80.32, 82.32), content:  I'm not lucky that it would be something taking out there.
+right speaker, start/end time: (82.34, 84.42), content:  And they still would do it because not having it,
+right speaker, start/end time: (84.52, 85.24), content:  stay with that one.
+right speaker, start/end time: (85.41, 86.96), content:  And they hear it probably.
+right speaker, start/end time: (87.18, 88.54), content:  Ha, ha, ha, ha, ha, ha, ha, ha, ha, ha.
+left speaker, start/end time: (87.24, 87.52), content:  All right.
+left speaker, start/end time: (88.13, 89.06), content:  No, that's not right.
+left speaker, start/end time: (89.26, 91.88), content:  Exactly.
+right speaker, start/end time: (90.00, 90.96), content:  And it's how you are the country.
+right speaker, start/end time: (91.35, 95.10), content:  And they get that many in the house,
+left speaker, start/end time: (93.37, 94.54), content:  Yeah, you would want to catch him.
+right speaker, start/end time: (95.14, 96.12), content:  like for the cities,
+right speaker, start/end time: (96.16, 96.40), content:  the country.
+left speaker, start/end time: (96.47, 97.96), content:  No, they have the...
+right speaker, start/end time: (97.54, 99.82), content:  Oh, wow.
+left speaker, start/end time: (97.96, 100.64), content:  Well,
+right speaker, start/end time: (101.51, 102.82), content:  It's only three called.
+right speaker, start/end time: (102.98, 103.36), content:  Yeah,
+right speaker, start/end time: (103.40, 105.38), content:  they have every nine years now when it comes called here.
+right speaker, start/end time: (105.66, 106.52), content:  And I went to it.
+right speaker, start/end time: (107.02, 108.50), content:  I really just don't work down.
+right speaker, start/end time: (108.86, 110.20), content:  I was most of a country.
+right speaker, start/end time: (110.80, 111.12), content:  I can't,
+right speaker, start/end time: (111.14, 112.89), content:  I really down to a 14. Yeah,
+left speaker, start/end time: (112.70, 114.34), content:  that's what the work for the last time around the team.
+right speaker, start/end time: (114.82, 115.86), content:  I had my kids.
+right speaker, start/end time: (115.92, 117.10), content:  I find like if they had the big.
+right speaker, start/end time: (117.36, 117.46), content:  Ha,
+left speaker, start/end time: (117.64, 118.50), content:  Yeah, they did here, too.
+right speaker, start/end time: (118.82, 119.70), content:  ha, ha, ha, ha, ha, ha, ha.`,
+        '1-sci': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth?
+left speaker, start/end time: (0.62, 1.86), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.20, 3.38), content:  I live in Tarzana, California.
+right speaker, start/end time: (5.34, 5.88), content:  This is Kenneth.
+left speaker, start/end time: (7.76, 8.80), content:  How you doing today?
+right speaker, start/end time: (8.74, 9.70), content:  Hi, how you doing?
+left speaker, start/end time: (9.68, 10.36), content:  Okay.
+right speaker, start/end time: (11.60, 14.52), content:  In Virginia, Hawaii, California.
+left speaker, start/end time: (12.02, 12.84), content:  Whereabouts you located, sir?
+left speaker, start/end time: (14.56, 16.58), content:  Yeah, Tarzana, California.
+left speaker, start/end time: (16.72, 19.64), content:  It's about 18 miles outside of the
+left speaker, start/end time: (21.10, 22.24), content:  downtown Los Angeles.
+right speaker, start/end time: (22.26, 24.44), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (23.12, 23.62), content:  We sent it...
+left speaker, start/end time: (24.92, 25.32), content:  Pardon me, sir?
+right speaker, start/end time: (25.56, 26.70), content:  When did you sign up for this?
+left speaker, start/end time: (26.38, 27.54), content:  This morning?
+right speaker, start/end time: (27.60, 28.32), content:  Okay.
+left speaker, start/end time: (30.58, 39.38), content:  Um...
+right speaker, start/end time: (31.07, 32.92), content:  So, if you had a...
+right speaker, start/end time: (34.21, 35.28), content:  If my own was no object,
+right speaker, start/end time: (35.40, 36.46), content:  you had to open a business,
+right speaker, start/end time: (36.64, 37.22), content:  what would you do?
+left speaker, start/end time: (39.88, 41.14), content:  Well, actually...
+right speaker, start/end time: (40.27, 42.21), content:  I guess I would do
+right speaker, start/end time: (43.32, 45.40), content:  something in artistry or something
+left speaker, start/end time: (45.10, 45.36), content:  Uh-huh.
+right speaker, start/end time: (46.06, 47.16), content:  in the retail category.
+right speaker, start/end time: (49.85, 50.30), content:  I
+right speaker, start/end time: (51.02, 52.46), content:  guess one of the things I've thought about
+right speaker, start/end time: (52.46, 54.28), content:  a lot and what I'd like to do is actually...
+right speaker, start/end time: (55.56, 55.68), content:  I
+right speaker, start/end time: (57.76, 59.54), content:  don't have a right object of what this is,
+right speaker, start/end time: (59.96, 63.42), content:  but I thought about maybe opening up a laundromat or
+left speaker, start/end time: (60.00, 60.10), content:  Well,
+right speaker, start/end time: (64.32, 67.56), content:  possibly a solding policy.
+left speaker, start/end time: (68.00, 68.40), content:  you can...
+right speaker, start/end time: (68.84, 69.68), content:  Well, no.
+left speaker, start/end time: (69.28, 69.96), content:  You could, uh...
+right speaker, start/end time: (70.10, 71.80), content:  Okay, I don't know what they mean by...
+left speaker, start/end time: (70.42, 72.60), content:  I guess I could refund in paralysis.
+right speaker, start/end time: (73.17, 73.62), content:  Okay,
+right speaker, start/end time: (73.68, 73.80), content:  well,
+right speaker, start/end time: (73.90, 77.05), content:  I guess I don't know what I mean by refunding policy either,
+right speaker, start/end time: (77.16, 79.48), content:  but I know what the solding concept is
+right speaker, start/end time: (79.48, 81.40), content:  and I guess I wouldn't do it that way.
+right speaker, start/end time: (81.54, 83.44), content:  I would do something that would...
+right speaker, start/end time: (86.56, 89.14), content:  I wouldn't just say I would refund.
+left speaker, start/end time: (90.00, 90.10), content:  Okay.
+right speaker, start/end time: (90.26, 90.98), content:  I'd resell.
+left speaker, start/end time: (91.94, 94.58), content:  Okay.
+right speaker, start/end time: (92.02, 93.24), content:  I'd sell and then refund.
+right speaker, start/end time: (93.84, 94.46), content:  I guess it's...
+left speaker, start/end time: (94.78, 95.30), content:  Okay.
+right speaker, start/end time: (94.86, 99.72), content:  It sounds like what I'm thinking is what
+left speaker, start/end time: (96.96, 102.60), content:  Um...
+right speaker, start/end time: (101.24, 102.00), content:  I would do.
+right speaker, start/end time: (103.34, 107.06), content:  But again, I don't know what I would sell.
+right speaker, start/end time: (108.60, 109.46), content:  It might be...
+right speaker, start/end time: (112.62, 113.48), content:  Commerce in general.
+right speaker, start/end time: (113.70, 115.18), content:  But,
+right speaker, start/end time: (115.80, 117.28), content:  you know, I don't know.`,
+        '1-moshi': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth?
+left speaker, start/end time: (0.60, 1.86), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.20, 3.34), content:  I live in Tarzana, California.
+right speaker, start/end time: (5.34, 5.86), content:  This is Kenneth.
+left speaker, start/end time: (7.81, 8.78), content:  How you doing today?
+right speaker, start/end time: (9.18, 9.68), content:  How are you doing?
+left speaker, start/end time: (9.66, 10.38), content:  Okay.
+right speaker, start/end time: (11.62, 12.00), content:  Is
+left speaker, start/end time: (12.04, 12.86), content:  Whereabouts you located, sir?
+right speaker, start/end time: (13.12, 14.76), content:  Virginia have a e-California?
+left speaker, start/end time: (14.66, 16.56), content:  Yeah, Tarzana, California.
+left speaker, start/end time: (16.66, 19.82), content:  About 18 miles outside of the...
+left speaker, start/end time: (21.02, 21.74), content:  ...town town Los Angeles.
+right speaker, start/end time: (22.21, 24.44), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (23.02, 23.62), content:  We sent it...
+left speaker, start/end time: (24.92, 25.32), content:  Pardon me, sir?
+right speaker, start/end time: (25.54, 26.70), content:  When did you sign up for this?
+left speaker, start/end time: (26.44, 27.56), content:  This morning.
+right speaker, start/end time: (27.62, 28.28), content:  Okay.
+left speaker, start/end time: (28.00, 28.10), content:  Okay.
+right speaker, start/end time: (30.10, 30.66), content:  Last week,
+right speaker, start/end time: (31.50, 32.18), content:  about a week ago.
+left speaker, start/end time: (33.12, 33.82), content:  I've never done this before.
+right speaker, start/end time: (33.24, 36.80), content:  Okay.
+left speaker, start/end time: (33.94, 35.90), content:  This will be my first try.
+left speaker, start/end time: (37.30, 37.72), content:  So...
+left speaker, start/end time: (38.53, 38.98), content:  Okay.
+right speaker, start/end time: (38.96, 49.42), content:  Okay.
+left speaker, start/end time: (39.18, 42.04), content:  I know they want us to talk about professional sports,
+left speaker, start/end time: (42.18, 43.18), content:  and I'll just hit the...
+left speaker, start/end time: (44.36, 45.38), content:  Let me hold my phone,
+left speaker, start/end time: (45.93, 47.24), content:  and you go ahead and touch your one,
+left speaker, start/end time: (47.30, 48.08), content:  and then we can go.
+left speaker, start/end time: (49.02, 49.22), content:  Okay.
+right speaker, start/end time: (50.22, 50.94), content:  Okay.
+right speaker, start/end time: (51.08, 52.36), content:  So what teams are you...
+left speaker, start/end time: (51.70, 54.10), content:  Okay.
+right speaker, start/end time: (53.16, 53.76), content:  You...
+right speaker, start/end time: (54.06, 55.24), content:  Okay.
+left speaker, start/end time: (54.10, 54.36), content:  Basketball.
+left speaker, start/end time: (56.68, 56.98), content:  Okay.
+left speaker, start/end time: (57.08, 57.62), content:  And what about you?
+left speaker, start/end time: (58.06, 63.66), content:  Yeah.
+right speaker, start/end time: (58.78, 59.86), content:  Let's see.
+right speaker, start/end time: (59.96, 61.48), content:  I'm interested in basketball.
+right speaker, start/end time: (62.14, 63.06), content:  A little bit in basketball.
+right speaker, start/end time: (64.78, 67.42), content:  And that's the two main ones.
+right speaker, start/end time: (67.64, 67.92), content:  You know,
+right speaker, start/end time: (68.78, 69.20), content:  if anything,
+right speaker, start/end time: (69.54, 71.58), content:  it's sports that I see out there is soccer.
+left speaker, start/end time: (72.36, 72.70), content:  Mm-hmm.
+right speaker, start/end time: (73.08, 74.33), content:  You know, you hear about...
+right speaker, start/end time: (74.36, 76.68), content:  You don't hear about many college football teams
+right speaker, start/end time: (78.26, 78.82), content:  that do good.
+right speaker, start/end time: (78.92, 79.92), content:  The professional teams,
+left speaker, start/end time: (79.26, 79.54), content:  Hmm.
+right speaker, start/end time: (80.46, 82.50), content:  they're usually the ones that do really good.
+left speaker, start/end time: (89.43, 89.88), content:  Uh... Okay,
+left speaker, start/end time: (91.08, 91.74), content:  so...
+right speaker, start/end time: (91.86, 92.92), content:  You know what?
+left speaker, start/end time: (93.03, 93.83), content:  Do you have any favorite...
+left speaker, start/end time: (94.14, 94.56), content:  I don't know.
+left speaker, start/end time: (94.66, 95.58), content:  Do you have any favorite sports?
+left speaker, start/end time: (95.86, 96.66), content:  Any, uh...
+left speaker, start/end time: (97.16, 98.22), content:  Professional or any of that?
+left speaker, start/end time: (98.26, 98.86), content:  Any of those games?
+right speaker, start/end time: (98.43, 99.28), content:  Yeah.
+left speaker, start/end time: (99.42, 102.98), content:  Mm-hmm.
+right speaker, start/end time: (99.64, 100.86), content:  The most I watch is...
+right speaker, start/end time: (101.08, 103.98), content:  I watch basketball and professional basketball most.
+left speaker, start/end time: (102.98, 102.98), content:  Yeah.
+right speaker, start/end time: (106.58, 108.26), content:  Like on television or on KSP.
+right speaker, start/end time: (109.62, 110.21), content:  Or on KJBC.
+right speaker, start/end time: (111.62, 112.38), content:  Local channel.
+right speaker, start/end time: (113.60, 114.40), content:  That's about it with me.
+right speaker, start/end time: (115.54, 118.92), content:  I used to watch football on a regular basis.`,
+        '1-turnguide': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth?
+left speaker, start/end time: (0.60, 1.86), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.20, 3.40), content:  I live in Tarzana, California.
+right speaker, start/end time: (2.20, 5.84), content:  Mrs. Kenneth?
+left speaker, start/end time: (7.79, 8.78), content:  How you doing today?
+right speaker, start/end time: (9.18, 9.68), content:  How are you doing?
+left speaker, start/end time: (9.62, 10.36), content:  Okay.
+right speaker, start/end time: (11.62, 14.48), content:  In Virginia, Hawaii, California?
+left speaker, start/end time: (11.96, 12.88), content:  Whereabouts you located, sir?
+left speaker, start/end time: (14.54, 16.52), content:  Yeah, Tarzana, California.
+left speaker, start/end time: (16.64, 22.16), content:  About 18 miles outside of the downtown Los Angeles.
+right speaker, start/end time: (22.21, 24.44), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (23.12, 23.60), content:  We sit at...
+left speaker, start/end time: (24.90, 25.30), content:  Pardon me, sir?
+right speaker, start/end time: (25.56, 26.70), content:  When did you sign up for this?
+left speaker, start/end time: (26.20, 27.50), content:  This morning?
+right speaker, start/end time: (27.68, 28.28), content:  Okay.
+left speaker, start/end time: (30.00, 41.26), content:  Yeah.
+right speaker, start/end time: (30.29, 30.74), content:  Okay,
+right speaker, start/end time: (30.86, 31.78), content:  I signed up yesterday,
+right speaker, start/end time: (31.98, 33.24), content:  which is why I'm a little confused.
+right speaker, start/end time: (33.54, 35.36), content:  I thought that you had to call,
+right speaker, start/end time: (35.62, 39.18), content:  and then they matched you up with somebody,
+right speaker, start/end time: (39.26, 40.76), content:  and they just matched me up with you,
+right speaker, start/end time: (40.84, 43.44), content:  and I don't understand how that works,
+right speaker, start/end time: (43.54, 45.52), content:  but I guess we're just supposed to talk about the subject,
+left speaker, start/end time: (43.72, 46.14), content:  Right.
+right speaker, start/end time: (45.64, 47.06), content:  which is family values,
+left speaker, start/end time: (46.64, 48.28), content:  Right.
+right speaker, start/end time: (47.22, 47.60), content:  I guess.
+left speaker, start/end time: (56.38, 57.24), content:  What do you think, sir?
+right speaker, start/end time: (62.00, 64.30), content:  I don't know if that's what they're looking for or not,
+right speaker, start/end time: (64.38, 65.42), content:  but that's what I would think.
+right speaker, start/end time: (65.70, 68.32), content:  It's hard to talk about family values for ten minutes.
+right speaker, start/end time: (68.40, 68.72), content:  I mean,
+right speaker, start/end time: (69.42, 69.68), content:  you know,
+right speaker, start/end time: (69.68, 71.08), content:  maybe if it was something more,
+right speaker, start/end time: (71.12, 71.40), content:  like,
+right speaker, start/end time: (71.40, 71.90), content:  specific.
+right speaker, start/end time: (73.68, 74.34), content:  But I don't know.
+right speaker, start/end time: (74.59, 76.50), content:  How do you feel about family values?
+right speaker, start/end time: (76.56, 77.08), content:  Are you married?
+left speaker, start/end time: (77.88, 78.26), content:  I'm divorced.
+left speaker, start/end time: (78.46, 79.28), content:  I've been divorced twice.
+right speaker, start/end time: (79.45, 80.58), content:  I am also.
+left speaker, start/end time: (84.26, 86.96), content:  And I don't know if it's a bad thing or a good thing.
+right speaker, start/end time: (84.62, 93.76), content:  I
+left speaker, start/end time: (87.06, 89.82), content:  I just think that the concept of
+left speaker, start/end time: (90.54, 92.58), content:  having to stay with somebody for the rest of your life,
+left speaker, start/end time: (93.06, 94.46), content:  once you make a commitment to them,
+left speaker, start/end time: (94.50, 96.26), content:  has sort of changed for me.
+left speaker, start/end time: (97.54, 101.72), content:  And I think that's sort of reflected in the statistics where less
+right speaker, start/end time: (102.20, 110.80), content:  am also.
+left speaker, start/end time: (102.28, 105.46), content:  people are getting married and less people are staying married.
+left speaker, start/end time: (105.66, 106.94), content:  And I'm one of those statistics.
+left speaker, start/end time: (108.32, 111.32), content:  But I think the thing that I value most about the
+right speaker, start/end time: (111.46, 116.98), content:  Thank you.
+left speaker, start/end time: (111.50, 113.82), content:  concept of marriage is that you do make that commitment
+left speaker, start/end time: (113.82, 117.28), content:  and you try to stick to it even if things get bad.
+left speaker, start/end time: (118.70, 119.56), content:  And I think that's...`,
+        '1-ground': `right speaker, start/end time: (0.00, 0.10), content:  Kenneth?
+left speaker, start/end time: (0.64, 1.83), content:  My name is Richard Haviland.
+left speaker, start/end time: (2.02, 3.14), content:  I live in Tarzana, California.
+right speaker, start/end time: (5.36, 5.88), content:  This is Kenneth.
+left speaker, start/end time: (7.86, 8.78), content:  How are you doing today?
+right speaker, start/end time: (8.88, 9.72), content:  All right, how are you doing?
+left speaker, start/end time: (9.79, 10.34), content:  Okay.
+right speaker, start/end time: (11.64, 13.52), content:  In Virginia.
+left speaker, start/end time: (12.00, 12.90), content:  Whereabouts are you located, sir?
+right speaker, start/end time: (13.64, 14.32), content:  How about you, California?
+left speaker, start/end time: (14.86, 15.56), content:  Yeah,
+left speaker, start/end time: (15.66, 16.06), content:  Tarzana,
+left speaker, start/end time: (16.38, 19.62), content:  California is about 18 miles outside of the
+left speaker, start/end time: (21.08, 21.72), content:  downtown Los Angeles.
+right speaker, start/end time: (22.26, 22.66), content:  California?
+right speaker, start/end time: (22.66, 24.38), content:  Okay, when did you sign up for this?
+left speaker, start/end time: (24.30, 25.28), content:  Pardon me, sir?
+right speaker, start/end time: (25.56, 26.64), content:  When did you sign up for this?
+left speaker, start/end time: (25.86, 27.48), content:  This morning?
+right speaker, start/end time: (27.14, 27.54), content:  Okay.
+right speaker, start/end time: (29.84, 31.54), content:  I live out in Virginia near Richmond.
+right speaker, start/end time: (32.54, 34.20), content:  Really?
+left speaker, start/end time: (32.68, 34.12), content:  I used to live in Richmond a
+right speaker, start/end time: (34.52, 40.98), content:  Oh, it is.
+left speaker, start/end time: (35.06, 35.72), content:  long time ago.
+left speaker, start/end time: (35.84, 37.68), content:  I used to live in Crestview off of Horsepen Road.
+left speaker, start/end time: (39.38, 40.62), content:  Small world, isn't it?
+right speaker, start/end time: (42.28, 43.76), content:  So what changes have you made in
+right speaker, start/end time: (43.86, 44.08), content:  your life?
+left speaker, start/end time: (44.30, 47.38), content:  What changes have I made in my life since 9-11?
+left speaker, start/end time: (49.41, 50.88), content:  I hate to say it, but not too much.
+left speaker, start/end time: (50.94, 51.14), content:  Why?
+right speaker, start/end time: (50.97, 56.44), content:  I haven't made too many changes either, have I?
+left speaker, start/end time: (52.16, 53.20), content:  Sir, I'm retired.
+left speaker, start/end time: (56.58, 58.18), content:  I have not made a lot of changes, Kenneth.
+right speaker, start/end time: (57.20, 57.44), content:  Yeah,
+left speaker, start/end time: (58.48, 58.74), content:  I'm sorry.
+right speaker, start/end time: (59.86, 60.58), content:  I think,
+left speaker, start/end time: (60.42, 61.20), content:  What is your last name, sir?
+left speaker, start/end time: (61.48, 63.66), content:  Haviland.
+right speaker, start/end time: (61.74, 62.32), content:  see what your
+right speaker, start/end time: (62.48, 62.66), content:  last name?
+right speaker, start/end time: (62.90, 64.26), content:  Okay.
+right speaker, start/end time: (64.56, 65.24), content:  Yeah.
+left speaker, start/end time: (64.65, 66.42), content:  Now, there's a Haviland Chocolate.
+right speaker, start/end time: (65.36, 77.54), content:  Oh. Uh-huh.
+left speaker, start/end time: (66.66, 67.66), content:  There's a Haviland China.
+left speaker, start/end time: (67.82, 67.92), content:  Now,
+left speaker, start/end time: (68.00, 68.98), content:  if I was related to them,
+left speaker, start/end time: (69.10, 70.80), content:  and then there's Haviland Motor Oil,
+left speaker, start/end time: (70.86, 71.42), content:  but it's spelled differently.
+left speaker, start/end time: (71.92, 73.66), content:  Mine is spelled H-A-V-I-L-A-N-D.
+left speaker, start/end time: (74.09, 76.68), content:  That's H-A-V-O-L-I-N-E.
+left speaker, start/end time: (77.35, 78.76), content:  And if it was spelled the last way,
+left speaker, start/end time: (79.42, 80.48), content:  we wouldn't be talking on the phone.
+right speaker, start/end time: (81.47, 82.46), content:  You'd be rich.
+left speaker, start/end time: (82.74, 84.02), content:  No, basically, no.
+left speaker, start/end time: (84.10, 85.72), content:  I haven't changed anything in my life,
+left speaker, start/end time: (85.74, 86.00), content:  actually,
+left speaker, start/end time: (86.06, 86.76), content:  since 9-11,
+left speaker, start/end time: (87.02, 88.26), content:  because basically,
+left speaker, start/end time: (88.46, 89.02), content:  like I said,
+left speaker, start/end time: (89.06, 89.26), content:  I'm retired.
+left speaker, start/end time: (90.00, 91.42), content:  I invest in the stock market for a living.
+left speaker, start/end time: (91.58, 92.46), content:  That's what I do for a living.
+right speaker, start/end time: (92.48, 92.76), content:  I understand.
+right speaker, start/end time: (93.02, 93.66), content:  Are you that good at that?
+left speaker, start/end time: (93.48, 94.78), content:  I do very...
+right speaker, start/end time: (94.62, 98.44), content:  Uh-huh.
+left speaker, start/end time: (94.78, 95.00), content:  Well,
+left speaker, start/end time: (95.38, 95.94), content:  I tell you what,
+left speaker, start/end time: (96.06, 98.20), content:  a lot of us have all human as paper loss,
+left speaker, start/end time: (98.44, 99.38), content:  but you have to remember,
+right speaker, start/end time: (98.56, 101.54), content:  Uh-huh.
+left speaker, start/end time: (99.54, 99.64), content:  Kenneth,
+left speaker, start/end time: (99.88, 100.72), content:  it's only a paper loss.
+left speaker, start/end time: (101.70, 102.76), content:  I have over 211 invested.
+right speaker, start/end time: (103.94, 104.84), content:  Uh-huh.
+right speaker, start/end time: (104.84, 108.89), content:  Uh-huh.
+left speaker, start/end time: (105.04, 105.62), content:  I'll give you,
+left speaker, start/end time: (105.66, 106.02), content:  for example,
+left speaker, start/end time: (106.24, 108.86), content:  I have over 8,000 shares invested in technology,
+left speaker, start/end time: (109.66, 111.48), content:  but I do not own a computer or a cell phone.
+left speaker, start/end time: (111.74, 113.30), content:  And every time I see somebody walking
+left speaker, start/end time: (113.50, 114.46), content:  down the street with a cell phone,
+left speaker, start/end time: (114.56, 115.12), content:  you know what I tell them?
+left speaker, start/end time: (115.22, 116.18), content:  You keep buying those.
+left speaker, start/end time: (116.22, 116.92), content:  You're making me money.
+left speaker, start/end time: (117.66, 119.82), content:  Because I'm invested in everything.`
     };
 
     let currentlyPlaying = null;
